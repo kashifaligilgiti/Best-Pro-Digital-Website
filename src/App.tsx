@@ -9,6 +9,9 @@ import { Contact } from "./pages/Contact";
 import { CaseStudies } from "./pages/CaseStudies";
 import { Services } from "./pages/Services";
 import { ServicePage } from "./pages/ServicePage";
+import { NotFound } from "./pages/NotFound";
+import { Privacy } from "./pages/Privacy";
+import { Terms } from "./pages/Terms";
 import { CustomCursor } from "./components/ui/CustomCursor";
 import { ScrollIndicator } from "./components/ui/ScrollIndicator";
 
@@ -38,6 +41,9 @@ export default function App() {
               <Route path="/case-studies" element={<CaseStudies />} />
               <Route path="/services" element={<Services />} />
               <Route path="/services/:slug" element={<ServicePage />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />

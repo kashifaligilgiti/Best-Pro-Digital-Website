@@ -76,10 +76,32 @@ export const ServicePage = () => {
   }
 
   return (
-    <div ref={containerRef} className="lg:pl-16 pt-32 md:pt-40 pb-24 overflow-hidden">
+    <div ref={containerRef} className="lg:pl-16 pt-36 md:pt-44 pb-24 overflow-hidden">
       <Helmet>
         <title>{service.title} | GMB Rankup Service Matrix</title>
         <meta name="description" content={service.desc} />
+        <meta property="og:title" content={`${service.title} | Best Pro Digital`} />
+        <meta property="og:description" content={service.desc} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://bestprodigital.com/services/${service.slug}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "${service.title}",
+              "description": "${service.desc.replace(/"/g, '\\"')}",
+              "provider": {
+                "@type": "Organization",
+                "name": "Best Pro Digital",
+                "url": "https://bestprodigital.com"
+              },
+              "serviceType": "Digital Marketing",
+              "areaServed": "Global"
+            }
+          `}
+        </script>
       </Helmet>
 
       {/* Hero Section */}

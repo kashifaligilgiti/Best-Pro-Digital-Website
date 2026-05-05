@@ -74,7 +74,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" ref={containerRef} className="relative pt-32 md:pt-40 lg:pt-48 pb-0 overflow-hidden lg:pl-16 min-h-[90vh] flex flex-col">
+    <section id="hero" ref={containerRef} className="relative pt-36 md:pt-40 lg:pt-48 pb-0 overflow-hidden lg:pl-16 min-h-[90vh] flex flex-col">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex-1 flex flex-col justify-center relative w-full">
         <div className="absolute -top-12 md:-top-20 left-4 text-[15vw] md:text-[240px] font-black opacity-[0.03] leading-none select-none tracking-tighter pointer-events-none uppercase">
           EVOLUTION
@@ -297,6 +297,46 @@ export const Home = () => {
         <title>GMB Rankup | Digital Marketing Excellence 2026</title>
         <meta name="description" content="Elevate your brand with GMB Rankup. Expert SEO, PPC, and AI-driven marketing strategies designed for the 2026 digital landscape." />
         <meta name="keywords" content="digital marketing, SEO, GMB optimization, AI marketing, branding, growth strategy" />
+        <meta property="og:title" content="Best Pro Digital | Premier GMB & Local SEO Agency" />
+        <meta property="og:description" content="High-performance digital marketing specialized in GMB optimization and technical SEO." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bestprodigital.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Best Pro Digital | Premier GMB & Local SEO Agency" />
+        <meta name="twitter:description" content="High-performance digital marketing specialized in GMB optimization and technical SEO." />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Best Pro Digital",
+              "alternateName": "GMB Rankup",
+              "url": "https://bestprodigital.com",
+              "logo": "https://bestprodigital.com/logo.png",
+              "description": "Expert SEO, PPC, and AI-driven marketing strategies designed for the 2026 digital landscape.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "Global"
+              },
+              "sameAs": [
+                "https://facebook.com/bestprodigital",
+                "https://twitter.com/bestprodigital",
+                "https://instagram.com/bestprodigital",
+                "https://linkedin.com/company/bestprodigital"
+              ]
+            }
+          `}
+        </script>
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Best Pro Digital",
+              "url": "https://bestprodigital.com"
+            }
+          `}
+        </script>
       </Helmet>
       <Hero />
       <Services />

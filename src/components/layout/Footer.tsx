@@ -78,8 +78,8 @@ export const Footer = () => {
             © 2024 / Best Pro Digital / Growth Architecture
           </div>
           <div className="flex gap-8">
-            <span className="text-[10px] uppercase tracking-widest opacity-30 cursor-default hover:opacity-100 transition-opacity">Privacy Policy</span>
-            <span className="text-[10px] uppercase tracking-widest opacity-30 cursor-default hover:opacity-100 transition-opacity">Terms of Service</span>
+            <Link to="/privacy" className="text-[10px] uppercase tracking-widest opacity-30 hover:opacity-100 transition-opacity">Privacy Policy</Link>
+            <Link to="/terms" className="text-[10px] uppercase tracking-widest opacity-30 hover:opacity-100 transition-opacity">Terms of Service</Link>
           </div>
         </div>
       </div>

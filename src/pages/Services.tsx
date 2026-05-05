@@ -144,10 +144,28 @@ export const Services = () => {
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-brand-primary pt-24 md:pt-32 pb-40 lg:pl-16 relative overflow-hidden">
+    <div ref={containerRef} className="min-h-screen bg-brand-primary pt-36 md:pt-44 pb-40 lg:pl-16 relative overflow-hidden">
       <Helmet>
         <title>Our Services | Digital Marketing Infrastructure</title>
         <meta name="description" content="Explore our suite of technical marketing services: SEO, GMB Optimization, AI Receptionists, and more. Built for 2026 performance levels." />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "name": "Digital Marketing Services Matrix",
+              "description": "Premium technical marketing services including GBP Optimization, SEO Strategy, and AI integrations.",
+              "itemListElement": [
+                ${SERVICES.map((s, i) => `{
+                  "@type": "ListItem",
+                  "position": ${i + 1},
+                  "name": "${s.title}",
+                  "url": "https://bestprodigital.com/services/${s.slug}"
+                }`).join(',')}
+              ]
+            }
+          `}
+        </script>
       </Helmet>
       
       {/* Dynamic Background Elements */}

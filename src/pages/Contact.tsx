@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowRight, Mail, Phone, MapPin, Send, Sparkles } from "lucide-react";
 import { useState, FormEvent, useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import gsap from "gsap";
 
 export const Contact = () => {
@@ -35,7 +36,22 @@ export const Contact = () => {
   };
 
   return (
-    <div ref={containerRef} className="lg:pl-16 pt-32 md:pt-40 pb-20 md:pb-24">
+    <div ref={containerRef} className="lg:pl-16 pt-36 md:pt-44 pb-20 md:pb-24">
+      <Helmet>
+        <title>Contact Us | Best Pro Digital Strategy</title>
+        <meta name="description" content="Reach out to our growth specialists. Let's discuss your local SEO, GMB optimization, and digital scaling goals." />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "ContactPage",
+              "name": "Contact Best Pro Digital",
+              "description": "Get in touch with our digital growth specialists for GBP and SEO strategy.",
+              "url": "https://bestprodigital.com/contact"
+            }
+          `}
+        </script>
+      </Helmet>
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-12 md:gap-24">
           <div>

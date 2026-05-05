@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 export const CaseStudies = () => {
   const cases = [
@@ -35,7 +36,22 @@ export const CaseStudies = () => {
   ];
 
   return (
-    <div className="lg:pl-16 pt-32 md:pt-40 pb-20 md:pb-24">
+    <div className="lg:pl-16 pt-36 md:pt-44 pb-20 md:pb-24">
+      <Helmet>
+        <title>Case Studies | Best Pro Digital Success Portfolio</title>
+        <meta name="description" content="Witness the transformation. Explore our collection of high-impact case studies showing significant ROAS, lead generation, and brand growth." />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "CollectionPage",
+              "name": "Digital Marketing Case Studies",
+              "description": "Documented digital marketing transformations and success stories.",
+              "url": "https://bestprodigital.com/case-studies"
+            }
+          `}
+        </script>
+      </Helmet>
       <div className="max-w-7xl mx-auto px-12">
         <div className="mb-24">
           <p className="text-brand-accent text-xs uppercase tracking-[0.4em] mb-8 font-mono">Proof of work</p>

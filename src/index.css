@@ -15,12 +15,29 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply font-sans bg-brand-primary text-brand-text antialiased selection:bg-brand-accent selection:text-brand-primary;
+    @apply font-sans bg-brand-primary text-brand-text antialiased selection:bg-brand-accent selection:text-brand-primary overflow-x-hidden;
   }
   
   h1, h2, h3, h4 {
     @apply font-display tracking-tighter font-bold uppercase;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-brand-primary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full transition-colors hover:bg-brand-accent/50;
   }
 
   /* GSAP Animation Prep */
