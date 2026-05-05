@@ -46,6 +46,7 @@ export const Footer = () => {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center text-white/40 hover:border-brand-accent hover:text-brand-accent transition-all hover:scale-110"
+                  aria-label={social.label}
                   title={social.label}
                 >
                   <social.icon className="w-4 h-4" />

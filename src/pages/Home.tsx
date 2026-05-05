@@ -98,10 +98,20 @@ const Hero = () => {
             transition={{ delay: 1, duration: 1 }}
             className="flex flex-wrap gap-4 md:gap-6 mb-12 md:mb-20"
           >
-            <Link to="/contact" className="btn-primary group flex items-center gap-3 px-6 py-3 text-sm md:text-base md:px-8 md:py-4">
+            <Link 
+              to="/contact" 
+              aria-label="Contact us to start your project"
+              className="btn-primary group flex items-center gap-3 px-6 py-3 text-sm md:text-base md:px-8 md:py-4"
+            >
               Start Project <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link to="/case-studies" className="btn-outline px-6 py-3 text-sm md:text-base md:px-8 md:py-4">Case Studies</Link>
+            <Link 
+              to="/case-studies" 
+              aria-label="View our case studies"
+              className="btn-outline px-6 py-3 text-sm md:text-base md:px-8 md:py-4"
+            >
+              Case Studies
+            </Link>
           </motion.div>
         </div>
       </div>
@@ -171,7 +181,11 @@ const Services = () => {
                 <p className="text-neutral-500 text-xs md:text-sm leading-relaxed mb-10 md:mb-12 flex-1 font-light">
                   {s.desc}
                 </p>
-                <Link to={`/services/${s.slug}`} className="h-10 w-10 md:h-12 md:w-12 rounded-full border border-brand-accent flex items-center justify-center group cursor-pointer overflow-hidden self-start">
+                <Link 
+                  to={`/services/${s.slug}`} 
+                  aria-label={`Learn more about ${s.title}`}
+                  className="h-10 w-10 md:h-12 md:w-12 rounded-full border border-brand-accent flex items-center justify-center group cursor-pointer overflow-hidden self-start"
+                >
                   <div className="bg-brand-accent h-full w-full flex items-center justify-center transition-transform hover:scale-110">
                     <ArrowRight className="w-5 h-5 text-brand-primary" />
                   </div>
@@ -195,8 +209,20 @@ const PortfolioPeek = () => {
             { name: "Apex FinTech", result: "+$2M ARR", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069" },
             { name: "Lumina SaaS", result: "-32% CAC", img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070" }
           ].map((item, i) => (
-            <Link to="/case-studies" key={i} className={`portfolio-item group relative aspect-[4/5] overflow-hidden border-r border-brand-border ${i === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
-              <img src={item.img} alt={item.name} className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700" />
+            <Link 
+              to="/case-studies" 
+              key={i} 
+              aria-label={`View ${item.name} detailed case study`}
+              className={`portfolio-item group relative aspect-[4/5] overflow-hidden border-r border-brand-border ${i === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
+            >
+              <img 
+                src={item.img} 
+                alt={`Digital marketing transformation for ${item.name}`} 
+                loading="lazy"
+                width={800}
+                height={1000}
+                className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700" 
+              />
               <div className="absolute inset-0 bg-brand-primary/40 group-hover:bg-transparent transition-colors"></div>
               <div className="absolute bottom-8 left-8 right-8 md:bottom-12 md:left-12 md:right-12 z-10 transition-transform transform translate-y-4 group-hover:translate-y-0 duration-500">
                  <div className="text-[10px] font-bold uppercase tracking-widest text-brand-accent mb-2">Success Study</div>
@@ -297,6 +323,7 @@ export const Home = () => {
         <title>GMB Rankup | Digital Marketing Excellence 2026</title>
         <meta name="description" content="Elevate your brand with GMB Rankup. Expert SEO, PPC, and AI-driven marketing strategies designed for the 2026 digital landscape." />
         <meta name="keywords" content="digital marketing, SEO, GMB optimization, AI marketing, branding, growth strategy" />
+        <link rel="canonical" href="https://bestprodigital.com" />
         <meta property="og:title" content="Best Pro Digital | Premier GMB & Local SEO Agency" />
         <meta property="og:description" content="High-performance digital marketing specialized in GMB optimization and technical SEO." />
         <meta property="og:type" content="website" />

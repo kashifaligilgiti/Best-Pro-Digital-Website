@@ -80,6 +80,7 @@ export const ServicePage = () => {
       <Helmet>
         <title>{service.title} | GMB Rankup Service Matrix</title>
         <meta name="description" content={service.desc} />
+        <link rel="canonical" href={`https://bestprodigital.com/services/${service.slug}`} />
         <meta property="og:title" content={`${service.title} | Best Pro Digital`} />
         <meta property="og:description" content={service.desc} />
         <meta property="og:type" content="article" />
@@ -152,7 +153,10 @@ export const ServicePage = () => {
           >
              <img 
                src={service.image} 
-               alt={service.title} 
+               alt={`Visual representation of ${service.title} specialized strategy`} 
+               loading="lazy"
+               width={1000}
+               height={1200}
                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105 opacity-60"
              />
              <div className="absolute inset-0 bg-gradient-to-t from-brand-primary via-transparent to-transparent"></div>
@@ -321,7 +325,11 @@ export const ServicePage = () => {
         <h2 className="text-4xl sm:text-6xl md:text-9xl font-black uppercase tracking-tighter text-white mb-8 md:mb-12 italic relative z-10">
           Ready to <span className="text-brand-accent font-serif font-light lowercase">dominate</span>?
         </h2>
-        <Link to="/contact" className="btn-primary text-xl md:text-2xl px-10 py-5 md:px-16 md:py-6 inline-flex items-center gap-4 relative z-10 group">
+        <Link 
+          to="/contact" 
+          aria-label="Contact us to lock in your strategy"
+          className="btn-primary text-xl md:text-2xl px-10 py-5 md:px-16 md:py-6 inline-flex items-center gap-4 relative z-10 group"
+        >
           Lock in your Strategy <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
         </Link>
       </section>

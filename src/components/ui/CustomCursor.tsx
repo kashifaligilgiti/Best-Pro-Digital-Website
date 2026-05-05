@@ -55,17 +55,17 @@ export const CustomCursor = () => {
   }, []);
 
   return (
-    <>
+    <div aria-hidden="true" className="pointer-events-none">
       <div 
         ref={cursorRef} 
-        className="fixed top-0 left-0 w-2 h-2 bg-brand-accent rounded-full pointer-events-none z-[9999] mix-blend-difference hidden lg:block"
+        className="fixed top-0 left-0 w-2 h-2 bg-brand-accent rounded-full z-[9999] mix-blend-difference hidden lg:block"
         style={{ transform: "translate(-50%, -50%)" }}
       />
       <div 
         ref={followerRef} 
-        className="fixed top-0 left-0 w-8 h-8 border border-brand-accent rounded-full pointer-events-none z-[9998] opacity-30 hidden lg:block"
+        className="fixed top-0 left-0 w-8 h-8 border border-brand-accent rounded-full z-[9998] opacity-30 hidden lg:block"
         style={{ transform: "translate(-50%, -50%)" }}
       />
-    </>
+    </div>
   );
 };

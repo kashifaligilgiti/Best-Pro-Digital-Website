@@ -16,7 +16,7 @@ export const LeftRail = () => {
   }, []);
 
   return (
-    <div className="hidden lg:flex fixed left-0 top-0 bottom-0 w-16 border-r border-brand-border flex-col items-center justify-between py-12 z-50 bg-brand-primary">
+    <div aria-hidden="true" className="hidden lg:flex fixed left-0 top-0 bottom-0 w-16 border-r border-brand-border flex-col items-center justify-between py-12 z-50 bg-brand-primary">
       <div ref={logoRef} className="flex flex-col items-center gap-2 hover:scale-110 transition-transform cursor-pointer">
         <Logo className="w-8 h-8" />
       </div>

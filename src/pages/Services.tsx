@@ -148,6 +148,7 @@ export const Services = () => {
       <Helmet>
         <title>Our Services | Digital Marketing Infrastructure</title>
         <meta name="description" content="Explore our suite of technical marketing services: SEO, GMB Optimization, AI Receptionists, and more. Built for 2026 performance levels." />
+        <link rel="canonical" href="https://bestprodigital.com/services" />
         <script type="application/ld+json">
           {`
             {
@@ -411,6 +412,7 @@ export const Services = () => {
            <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center items-center">
               <Link 
                 to="/contact"
+                aria-label="Start your engagement journey"
                 className="group w-full sm:w-auto flex gap-6 md:gap-8 items-center justify-center bg-brand-accent text-brand-primary px-8 md:px-16 py-6 md:py-8 text-xs md:text-sm font-black uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95"
               >
                 Start Your Journey

@@ -40,6 +40,7 @@ export const Contact = () => {
       <Helmet>
         <title>Contact Us | Best Pro Digital Strategy</title>
         <meta name="description" content="Reach out to our growth specialists. Let's discuss your local SEO, GMB optimization, and digital scaling goals." />
+        <link rel="canonical" href="https://bestprodigital.com/contact" />
         <script type="application/ld+json">
           {`
             {
@@ -107,8 +108,9 @@ export const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
                 <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">First Name</label>
+                    <label htmlFor="firstName" className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">First Name</label>
                     <input 
+                      id="firstName"
                       required 
                       type="text" 
                       placeholder="e.g. John"
@@ -116,8 +118,9 @@ export const Contact = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">Last Name</label>
+                    <label htmlFor="lastName" className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">Last Name</label>
                     <input 
+                      id="lastName"
                       required 
                       type="text" 
                       placeholder="e.g. Doe"
@@ -128,8 +131,9 @@ export const Contact = () => {
 
                 <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">Email Channel</label>
+                    <label htmlFor="email" className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">Email Channel</label>
                     <input 
+                      id="email"
                       required 
                       type="email" 
                       placeholder="e.g. john@company.com"
@@ -137,8 +141,9 @@ export const Contact = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">Phone Number</label>
+                    <label htmlFor="phone" className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">Phone Number</label>
                     <input 
+                      id="phone"
                       required 
                       type="tel" 
                       placeholder="e.g. +1 123 456 7890"
@@ -148,9 +153,10 @@ export const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">Objective (Optional)</label>
+                  <label htmlFor="objective" className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">Objective (Optional)</label>
                   <div className="relative">
                     <select 
+                      id="objective"
                       className="w-full bg-brand-primary/50 border border-brand-border rounded-xl px-5 py-3.5 md:px-6 md:py-4 text-white focus:border-brand-accent outline-none transition-colors appearance-none"
                     >
                       <option>Select Objective</option>
@@ -168,8 +174,9 @@ export const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">Mission Brief</label>
+                  <label htmlFor="brief" className="text-[10px] uppercase tracking-widest font-black text-white/40 ml-4">Mission Brief</label>
                   <textarea 
+                    id="brief"
                     required 
                     rows={4}
                     placeholder="Describe your goals and current constraints..."

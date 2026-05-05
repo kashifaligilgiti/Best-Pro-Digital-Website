@@ -40,6 +40,7 @@ export const CaseStudies = () => {
       <Helmet>
         <title>Case Studies | Best Pro Digital Success Portfolio</title>
         <meta name="description" content="Witness the transformation. Explore our collection of high-impact case studies showing significant ROAS, lead generation, and brand growth." />
+        <link rel="canonical" href="https://bestprodigital.com/case-studies" />
         <script type="application/ld+json">
           {`
             {
@@ -73,7 +74,14 @@ export const CaseStudies = () => {
               className="bg-brand-primary group grid md:grid-cols-2 overflow-hidden"
             >
               <div className="relative aspect-video md:aspect-auto overflow-hidden order-last md:order-first">
-                <img src={c.img} alt={c.name} className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" />
+                <img 
+                  src={c.img} 
+                  alt={`Case Study: ${c.name} - ${c.result} Growth Transformation`} 
+                  loading="lazy"
+                  width={1200}
+                  height={800}
+                  className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" 
+                />
                 <div className="absolute inset-0 bg-brand-primary/20"></div>
               </div>
               <div className="p-12 lg:p-20 flex flex-col justify-center">
@@ -91,7 +99,11 @@ export const CaseStudies = () => {
                 <p className="text-neutral-500 mb-12 leading-relaxed">
                   {c.desc}
                 </p>
-                <Link to="/contact" className="inline-flex items-center gap-3 text-white font-bold uppercase tracking-widest text-xs group-hover:gap-6 transition-all duration-300">
+                <Link 
+                  to="/contact" 
+                  aria-label={`Get a transformation strategy session similar to ${c.name}`}
+                  className="inline-flex items-center gap-3 text-white font-bold uppercase tracking-widest text-xs group-hover:gap-6 transition-all duration-300"
+                >
                   Read Full Transformation <ArrowRight className="text-brand-accent" />
                 </Link>
               </div>

@@ -39,9 +39,9 @@ export const Navbar = () => {
   return (
     <nav className={`fixed top-0 right-0 left-0 lg:left-16 z-40 transition-all duration-300 ${isScrolled ? 'bg-brand-primary/95 backdrop-blur-md h-16 border-b border-brand-border shadow-2xl' : 'bg-transparent h-24'}`}>
       <div className="max-w-7xl mx-auto h-full px-8 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <Logo className="w-8 h-8" />
-          <span className="font-display text-xl font-bold tracking-tighter text-white">BEST PRO DIGITAL</span>
+        <Link to="/" className="flex items-center gap-3">
+          <Logo className="w-10 h-10" />
+          <span className="font-display text-2xl font-bold tracking-tighter text-white uppercase italic">Best Pro Digital</span>
         </Link>
         
 
@@ -95,14 +95,22 @@ export const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <Link to="/contact" className="h-10 w-10 rounded-full border border-brand-accent flex items-center justify-center group cursor-pointer overflow-hidden">
+          <Link 
+            to="/contact" 
+            aria-label="Contact us to start your project"
+            className="h-10 w-10 rounded-full border border-brand-accent flex items-center justify-center group cursor-pointer overflow-hidden"
+          >
             <div className="bg-brand-accent h-full w-full flex items-center justify-center transition-transform hover:scale-110">
               <ArrowRight className="w-5 h-5 text-brand-primary" />
             </div>
           </Link>
         </div>
 
-        <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <button 
+          className="md:hidden text-white p-2" 
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+        >
           {mobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
@@ -128,9 +136,9 @@ export const Navbar = () => {
               className="fixed top-0 right-0 w-[82%] h-screen h-[100dvh] bg-brand-primary z-[60] flex flex-col md:hidden border-l border-brand-border shadow-[-10px_0_30px_rgba(0,0,0,0.5)]"
             >
               <div className="h-16 md:h-20 px-6 md:px-8 flex items-center justify-between border-b border-brand-border shrink-0">
-              <Link to="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-                <Logo className="w-8 h-8" />
-                <span className="font-display text-lg font-bold tracking-tighter text-white uppercase">Best Pro Digital</span>
+              <Link to="/" className="flex items-center gap-3" onClick={() => setMobileMenuOpen(false)}>
+                <Logo className="w-10 h-10" />
+                <span className="font-display text-xl font-bold tracking-tighter text-white uppercase italic">Best Pro Digital</span>
               </Link>
               <div className="flex items-center gap-4">
                  <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="h-10 w-10 rounded-full border border-brand-accent flex items-center justify-center bg-brand-accent">

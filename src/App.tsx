@@ -30,11 +30,17 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <CustomCursor />
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-20 focus:z-[100] focus:bg-brand-accent focus:text-brand-primary focus:px-6 focus:py-3 focus:rounded-full focus:font-black focus:uppercase focus:text-xs"
+        >
+          Skip to content
+        </a>
         <div className="min-h-screen relative bg-brand-primary">
           <LeftRail />
           <Navbar />
           <ScrollIndicator />
-          <main>
+          <main id="main-content">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
