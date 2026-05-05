@@ -1,0 +1,142 @@
+export const SERVICES = [
+  { 
+    slug: "gbp-optimization",
+    title: "GBP Optimization", 
+    desc: "Dominate local search and maximize visibility.", 
+    num: "01",
+    longDesc: "Your Google Business Profile is the digital storefront of your local presence. We don't just 'fill out details'—we optimize for the local map pack algorithm through precise geometric targeting and semantic citation building.",
+    benefits: ["Top 3 Map Pack Placement", "Increased Zero-Click Conversions", "Review Velocity Systems", "Local Keyword Dominance"],
+    process: ["Profile Audit", "Citation Cleanup", "Local Post Strategy", "Geo-tagged Media Optimization"],
+    metric: "320%",
+    metricLabel: "Increase in local phone leads",
+    accentColor: "text-blue-400",
+    image: "https://images.unsplash.com/photo-1572021335469-31716248d1de?q=80&w=2070",
+    featureTitle: "Map Pack Supremacy",
+    featureDesc: "We use hyper-local data points to ensure your business remains at the top of the search results for every relevant neighborhood query."
+  },
+  { 
+    slug: "seo-strategy",
+    title: "SEO Strategy", 
+    desc: "Organic strategies that turn search into revenue.", 
+    num: "02",
+    longDesc: "Technical excellence meets content authority. Our SEO strategy is built on the three pillars of search: technical integrity, topical relevance, and trust signals. We build growth loops that compound over time.",
+    benefits: ["Compound Organic Traffic", "Reduced Ad Dependency", "High-Intent Keyword Capture", "Technical Site Health"],
+    process: ["Technical Audit", "Keyword Mapping", "On-Page Execution", "Link Architecture"],
+    metric: "12X",
+    metricLabel: "ROI across organic channels",
+    accentColor: "text-emerald-400",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426",
+    featureTitle: "Semantic Dominance",
+    featureDesc: "Our strategies go beyond simple keywords, focusing on topical authority that search engines reward with long-term stability."
+  },
+  { 
+    slug: "content-marketing",
+    title: "Content Marketing", 
+    desc: "High-authority narratives for your brand.", 
+    num: "03",
+    longDesc: "Content is the fuel for your growth engine. We produce high-fidelity editorial pieces that don't just inform—they position your brand as the inevitable choice for your target demographic.",
+    benefits: ["Thought Leadership", "Customer Education", "Social Proofing", "Search Intent Coverage"],
+    process: ["Topic Research", "High-Fidelity Drafting", "Multi-format Distribution", "Performance Analysis"],
+    metric: "4.5M",
+    metricLabel: "Monthly reading minutes accumulated",
+    accentColor: "text-amber-400",
+    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070",
+    featureTitle: "Editorial Excellence",
+    featureDesc: "We build narrative systems that educate your market and build trust before the first pitch is even made."
+  },
+  { 
+    slug: "social-media",
+    title: "Social Media", 
+    desc: "Strategic presence building community engagement.", 
+    num: "04",
+    longDesc: "Engagement is a metric, but community is an asset. We manage social ecosystems that foster deep connection, turning passive followers into active brand advocates and consistent revenue drivers.",
+    benefits: ["Direct Brand Engagement", "Community Loyalty", "Viral Growth Loops", "Real-time Feedback"],
+    process: ["Persona Definition", "Content Production", "Community Interaction", "Growth Metrics"],
+    metric: "85%",
+    metricLabel: "Engagement rate lift",
+    accentColor: "text-pink-400",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974",
+    featureTitle: "Vibrant Communities",
+    featureDesc: "We don't just post content; we moderate conversations that humanize your brand and drive consistent traffic."
+  },
+  { 
+    slug: "ppc-advertising",
+    title: "PPC Advertising", 
+    desc: "Precision media buying focused on scale.", 
+    num: "05",
+    longDesc: "Scale is the only goal. Our PPC campaigns are built on unit-economic rigor. We find your most profitable customer segments and deploy capital with mathematical certainty of ROI.",
+    benefits: ["Immediate Scale", "Predictable ROAS", "Dynamic Market Entry", "Pixel Performance"],
+    process: ["Audience Research", "Creative Testing", "Bid Optimization", "Scaling Logic"],
+    metric: "6.2",
+    metricLabel: "Average return on ad spend",
+    accentColor: "text-purple-400",
+    image: "https://images.unsplash.com/photo-1551288049-bbbda5366392?q=80&w=2070",
+    featureTitle: "Capital Efficiency",
+    featureDesc: "Our proprietary bidding strategies and creative testing loops ensure every dollar spent is working toward your core revenue targets.",
+    platforms: [
+      {
+        name: "Google Ads",
+        insight: "Intent is the highest signal of purchase. We dominate the auction by matching high-intent queries with hyper-relevant landing pages.",
+        focus: ["Search / Shopping", "YouTube Video Action", "Performance Max Optimization"],
+        color: "text-blue-400"
+      },
+      {
+        name: "Meta Ads",
+        insight: "Algorithm-first creative is the new targeting. We build modular creative systems that allow Meta's AI to find your best customers.",
+        focus: ["DPA / Catalog Sales", "UGC Creative Stacks", "Community Retargeting"],
+        color: "text-purple-400"
+      },
+      {
+        name: "TikTok Ads",
+        insight: "Stop making ads; start making TikToks. We leverage the entertainment-first nature of the platform to drive massive top-of-funnel velocity.",
+        focus: ["Spark Ads Strategy", "Creator-Led Campaigns", "Viral Growth Loops"],
+        color: "text-rose-400"
+      }
+    ]
+  },
+  { 
+    slug: "ai-receptionist",
+    title: "AI Receptionist", 
+    desc: "24/7 interaction that converts while you sleep.", 
+    num: "06",
+    longDesc: "Don't let a lead go cold. Our intelligent AI receptionists handle inquiries with human-like nuance and machine-like efficiency, ensuring every touchpoint is a conversion opportunity.",
+    benefits: ["24/7 Lead Capture", "Zero Response Latency", "Automated Qualification", "Seamless CRM Flow"],
+    process: ["Knowledge Base Setup", "Personality Tuning", "Integration Testing", "Live Deployment"],
+    metric: "98%",
+    metricLabel: "Lead qualification accuracy",
+    accentColor: "text-cyan-400",
+    image: "https://images.unsplash.com/photo-1531746790731-6c087fecd05a?q=80&w=2111",
+    featureTitle: "Conversational Intelligence",
+    featureDesc: "Advanced natural language processing allows our AI to handle complex inquiries and book appointments directly into your calendar."
+  },
+  { 
+    slug: "crm-integrations",
+    title: "CRM Integrations", 
+    desc: "Systematized management for maximum LTV.", 
+    num: "07",
+    longDesc: "Your data is only as good as your visibility into it. We integrate and automate your CRM to ensure no customer falls through the cracks and every lead is nurtured with precision.",
+    benefits: ["Pipeline Visibility", "Automated Nurturing", "Data-Driven Decisions", "LTV Maximization"],
+    process: ["Systems Mapping", "Data Cleanup", "Flow Automation", "Team Training"],
+    metric: "45%",
+    metricLabel: "Reduction in sales cycle time",
+    accentColor: "text-indigo-400",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070",
+    featureTitle: "Infrastructure Power",
+    featureDesc: "We eliminate friction in your sales process by automating repetitive tasks and ensuring data flows seamlessly between your tools."
+  },
+  { 
+    slug: "global-branding",
+    title: "Global Branding", 
+    desc: "Iconic identities that command attention.", 
+    num: "08",
+    longDesc: "In a world of noise, clarity is king. We craft visual and narrative brand systems that resonate at a primal level, ensuring you are recognized and remembered across all global touchpoints.",
+    benefits: ["Market Differentiation", "Premium Positioning", "Cultural Resonance", "Visual Authority"],
+    process: ["Brand Discovery", "Identity Systems", "Guidelines Creation", "Global Rollout"],
+    metric: "2.5M",
+    metricLabel: "Earned media impressions",
+    accentColor: "text-rose-400",
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070",
+    featureTitle: "Iconic Recognition",
+    featureDesc: "We define the visual and verbal language that makes your brand stand out in saturated markets and global territories."
+  }
+];

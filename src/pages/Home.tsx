@@ -1,0 +1,308 @@
+import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
+import { ArrowRight, Zap, Target, BarChart3, Globe2, Cpu, MessageSquare, Layers, Share2, Rocket } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { SERVICES } from "../constants";
+import { FutureMarketing2026 } from "../components/sections/FutureMarketing2026";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const Hero = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(".hero-line", 
+        {
+          y: 100,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power4.out",
+          clearProps: "all"
+        }
+      );
+      
+      gsap.fromTo(".hero-accent-text", 
+        {
+          x: -50,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          delay: 0.3,
+          ease: "power2.out",
+          clearProps: "all"
+        }
+      );
+
+      // Scroll reveal for stats
+      gsap.fromTo(".stat-item",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: ".stats-container",
+            start: "top 95%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+    }, containerRef);
+
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
+    return () => {
+      ctx.revert();
+      clearTimeout(timer);
+    };
+  }, []);
+
+  return (
+    <section id="hero" ref={containerRef} className="relative pt-32 md:pt-40 lg:pt-48 pb-0 overflow-hidden lg:pl-16 min-h-[90vh] flex flex-col">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex-1 flex flex-col justify-center relative w-full">
+        <div className="absolute -top-12 md:-top-20 left-4 text-[15vw] md:text-[240px] font-black opacity-[0.03] leading-none select-none tracking-tighter pointer-events-none uppercase">
+          EVOLUTION
+        </div>
+        
+        <div className="relative z-10 text-white">
+          <p className="hero-accent-text text-brand-accent text-[10px] md:text-xs uppercase tracking-[0.4em] mb-6 md:mb-8 font-mono font-bold">Impact through precision</p>
+          
+          <h1 ref={titleRef} className="text-5xl sm:text-6xl md:text-[110px] lg:text-[140px] font-black leading-[0.85] tracking-tighter uppercase mb-10 md:mb-12">
+            <div className="overflow-hidden"><div className="hero-line">Redefining</div></div>
+            <div className="overflow-hidden">
+              <div className="hero-line italic font-serif font-light lowercase pr-2 md:pr-4 opacity-80 inline-block">the</div> 
+              <div className="hero-line inline-block">Digital</div>
+            </div>
+            <div className="overflow-hidden"><div className="hero-line text-brand-accent">Frontier.</div></div>
+          </h1>
+          
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="flex flex-wrap gap-4 md:gap-6 mb-12 md:mb-20"
+          >
+            <Link to="/contact" className="btn-primary group flex items-center gap-3 px-6 py-3 text-sm md:text-base md:px-8 md:py-4">
+              Start Project <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link to="/case-studies" className="btn-outline px-6 py-3 text-sm md:text-base md:px-8 md:py-4">Case Studies</Link>
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="border-t border-brand-border flex flex-col md:flex-row mt-auto w-full">
+        <div className="md:w-1/2 border-r border-brand-border p-8 md:p-12 lg:p-20 flex flex-col justify-between gap-8 text-white bg-brand-primary">
+          <p className="text-lg md:text-2xl leading-relaxed opacity-70 font-light max-w-lg">
+            We orchestrate multi-channel strategies that connect human behavior with data-driven insights.
+          </p>
+          <div className="flex flex-wrap gap-2 md:gap-3">
+            {[
+              { label: "Strategy", icon: Target },
+              { label: "Design", icon: Layers },
+              { label: "Growth", icon: BarChart3 }
+            ].map(item => (
+              <span key={item.label} className="bg-white/5 border border-white/10 px-3 py-1 md:px-4 md:py-1.5 rounded-full text-[9px] md:text-[10px] uppercase tracking-widest font-bold flex items-center gap-2 group hover:bg-brand-accent/20 transition-colors">
+                <item.icon className="w-3 h-3 text-brand-accent" />
+                {item.label}
+              </span>
+            ))}
+          </div>
+        </div>
+        
+        <div className="stats-container md:w-1/2 grid grid-cols-2 bg-brand-accent text-brand-primary">
+          <div className="stat-item border-r border-black/10 p-8 md:p-12 flex flex-col justify-center">
+            <span className="text-4xl md:text-5xl font-black mb-1">+142%</span>
+            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-black opacity-40">Avg. ROAS Increase</span>
+          </div>
+          <Link to="/contact" className="stat-item p-8 md:p-12 flex flex-col justify-center group cursor-pointer relative overflow-hidden">
+            <div className="relative z-10 flex items-center justify-between">
+              <span className="text-xl md:text-2xl font-black uppercase leading-tight italic">Work<br/>With Us</span>
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-brand-primary flex items-center justify-center transition-transform group-hover:rotate-45">
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+              </div>
+            </div>
+            <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ServiceIcons: Record<string, any> = {
+  "profile-optimization": Globe2,
+  "seo-strategy": Rocket,
+  "content-marketing": MessageSquare,
+  "social-media": Share2,
+  "ppc-advertising": Zap,
+  "ai-receptionist": Cpu,
+  "crm-integrations": Layers,
+  "global-branding": Target,
+};
+
+const Services = () => {
+  return (
+    <section id="services" className="lg:pl-16 border-t border-brand-border overflow-hidden">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+          {SERVICES.map((s, i) => {
+            const Icon = ServiceIcons[s.slug] || Zap;
+            return (
+              <div key={i} className="home-service-card group p-8 md:p-12 lg:p-16 border-r border-b border-brand-border hover:bg-white/[0.02] transition-all duration-500 relative h-full flex flex-col">
+                <Icon className="w-6 h-6 md:w-8 md:h-8 text-brand-accent mb-6 md:mb-8 opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
+                <span className="absolute top-8 right-8 md:top-10 md:right-10 font-mono text-[10px] md:text-xs opacity-20 text-white">{s.num}</span>
+                <h3 className="text-xl md:text-2xl font-black mb-4 md:mb-6 uppercase leading-tight text-white group-hover:text-brand-accent transition-colors">{s.title}</h3>
+                <p className="text-neutral-500 text-xs md:text-sm leading-relaxed mb-10 md:mb-12 flex-1 font-light">
+                  {s.desc}
+                </p>
+                <Link to={`/services/${s.slug}`} className="h-10 w-10 md:h-12 md:w-12 rounded-full border border-brand-accent flex items-center justify-center group cursor-pointer overflow-hidden self-start">
+                  <div className="bg-brand-accent h-full w-full flex items-center justify-center transition-transform hover:scale-110">
+                    <ArrowRight className="w-5 h-5 text-brand-primary" />
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const PortfolioPeek = () => {
+  return (
+    <section id="case-studies-peek" className="lg:pl-16 border-t border-brand-border overflow-hidden">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { name: "Verdia Energy", result: "4X Leads", img: "https://images.unsplash.com/photo-1551288049-bbbda5366392?q=80&w=2070" },
+            { name: "Apex FinTech", result: "+$2M ARR", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069" },
+            { name: "Lumina SaaS", result: "-32% CAC", img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070" }
+          ].map((item, i) => (
+            <Link to="/case-studies" key={i} className={`portfolio-item group relative aspect-[4/5] overflow-hidden border-r border-brand-border ${i === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
+              <img src={item.img} alt={item.name} className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700" />
+              <div className="absolute inset-0 bg-brand-primary/40 group-hover:bg-transparent transition-colors"></div>
+              <div className="absolute bottom-8 left-8 right-8 md:bottom-12 md:left-12 md:right-12 z-10 transition-transform transform translate-y-4 group-hover:translate-y-0 duration-500">
+                 <div className="text-[10px] font-bold uppercase tracking-widest text-brand-accent mb-2">Success Study</div>
+                 <h3 className="text-3xl md:text-4xl font-black text-white uppercase leading-none mb-4">{item.name}</h3>
+                 <div className="text-white/60 font-mono text-xs md:text-sm">{item.result}</div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CTASection = () => {
+  return (
+    <section id="cta" className="lg:pl-16 py-24 md:py-32 lg:py-40 text-center relative overflow-hidden">
+       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-brand-accent/5 rounded-full blur-[120px]"></div>
+       <div className="cta-content relative z-10 px-6">
+        <h2 className="text-5xl md:text-8xl lg:text-[10vw] font-black italic uppercase leading-[0.85] tracking-tighter mb-10 md:mb-16 text-white">
+          Join <br/> <span className="text-brand-accent">the</span> Elite.
+        </h2>
+        <p className="text-neutral-500 text-lg md:text-xl max-w-xl mx-auto mb-12 md:mb-20 font-light leading-relaxed">
+          We only partner with 4 brands per quarter to ensure absolute dominance.
+        </p>
+        <Link to="/contact" className="btn-primary text-xl md:text-2xl px-10 py-5 md:px-16 md:py-8 inline-block tracking-tighter uppercase font-black">Apply for Engagement</Link>
+       </div>
+    </section>
+  );
+};
+
+export const Home = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate service cards in Home
+      gsap.fromTo(".home-service-card", 
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: "#services",
+            start: "top 95%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // Portfolio items
+      gsap.fromTo(".portfolio-item", 
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: "#case-studies-peek",
+            start: "top 95%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // CTA entrance
+      gsap.fromTo(".cta-content", 
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: "#cta",
+            start: "top 95%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+    }, containerRef);
+
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 800);
+
+    return () => {
+      ctx.revert();
+      clearTimeout(timer);
+    };
+  }, []);
+
+  return (
+    <div ref={containerRef}>
+      <Helmet>
+        <title>GMB Rankup | Digital Marketing Excellence 2026</title>
+        <meta name="description" content="Elevate your brand with GMB Rankup. Expert SEO, PPC, and AI-driven marketing strategies designed for the 2026 digital landscape." />
+        <meta name="keywords" content="digital marketing, SEO, GMB optimization, AI marketing, branding, growth strategy" />
+      </Helmet>
+      <Hero />
+      <Services />
+      <PortfolioPeek />
+      <FutureMarketing2026 />
+      <CTASection />
+    </div>
+  );
+};
