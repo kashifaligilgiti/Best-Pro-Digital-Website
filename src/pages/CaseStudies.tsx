@@ -10,28 +10,28 @@ export const CaseStudies = () => {
       result: "412% Increase in Qualified Leads", 
       desc: "How we redefined a legacy energy brand for a digital-first audience, resulting in record-breaking lead generation.",
       tags: ["SEO", "Performance Marketing", "Branding"],
-      img: "https://images.unsplash.com/photo-1551288049-bbbda5366392?q=80&w=2070" 
+      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069" 
     },
     { 
       name: "Apex FinTech", 
       result: "+$12M Attributed Revenue", 
       desc: "Precision PPC and content loops for a high-growth fintech startup on its way to series B.",
       tags: ["Paid Media", "Content", "CRO"],
-      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069" 
+      img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=2070" 
     },
     { 
       name: "Lumina SaaS", 
       result: "32% Reduction in Customer Acquisition Cost", 
       desc: "Optimizing the full-funnel experience and implementing advanced marketing automation for a silicon valley SaaS.",
       tags: ["Automation", "Product", "Growth"],
-      img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070" 
+      img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2070" 
     },
     {
       name: "Nexus Retail",
       result: "2.5M Monthly Organic Sessions",
       desc: "Scaling an e-commerce giant's organic footprint through aggressive technical SEO and editorial excellence.",
       tags: ["Technical SEO", "Content Scale"],
-      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426"
+      img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=2070"
     }
   ];
 

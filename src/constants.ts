@@ -10,7 +10,7 @@ export const SERVICES = [
     metric: "320%",
     metricLabel: "Increase in local phone leads",
     accentColor: "text-blue-400",
-    image: "https://images.unsplash.com/photo-1572021335469-31716248d1de?q=80&w=2070",
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=2070",
     featureTitle: "Map Pack Supremacy",
     featureDesc: "We use hyper-local data points to ensure your business remains at the top of the search results for every relevant neighborhood query."
   },
@@ -25,7 +25,7 @@ export const SERVICES = [
     metric: "12X",
     metricLabel: "ROI across organic channels",
     accentColor: "text-emerald-400",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426",
     featureTitle: "Semantic Dominance",
     featureDesc: "Our strategies go beyond simple keywords, focusing on topical authority that search engines reward with long-term stability."
   },
@@ -40,7 +40,7 @@ export const SERVICES = [
     metric: "4.5M",
     metricLabel: "Monthly reading minutes accumulated",
     accentColor: "text-amber-400",
-    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070",
+    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=2070",
     featureTitle: "Editorial Excellence",
     featureDesc: "We build narrative systems that educate your market and build trust before the first pitch is even made."
   },
@@ -55,7 +55,7 @@ export const SERVICES = [
     metric: "85%",
     metricLabel: "Engagement rate lift",
     accentColor: "text-pink-400",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=1974",
     featureTitle: "Vibrant Communities",
     featureDesc: "We don't just post content; we moderate conversations that humanize your brand and drive consistent traffic."
   },
@@ -70,7 +70,7 @@ export const SERVICES = [
     metric: "6.2",
     metricLabel: "Average return on ad spend",
     accentColor: "text-purple-400",
-    image: "https://images.unsplash.com/photo-1551288049-bbbda5366392?q=80&w=2070",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=2070",
     featureTitle: "Capital Efficiency",
     featureDesc: "Our proprietary bidding strategies and creative testing loops ensure every dollar spent is working toward your core revenue targets.",
     platforms: [
@@ -105,7 +105,7 @@ export const SERVICES = [
     metric: "98%",
     metricLabel: "Lead qualification accuracy",
     accentColor: "text-cyan-400",
-    image: "https://images.unsplash.com/photo-1531746790731-6c087fecd05a?q=80&w=2111",
+    image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&q=80&w=2070",
     featureTitle: "Conversational Intelligence",
     featureDesc: "Advanced natural language processing allows our AI to handle complex inquiries and book appointments directly into your calendar."
   },
@@ -120,7 +120,7 @@ export const SERVICES = [
     metric: "45%",
     metricLabel: "Reduction in sales cycle time",
     accentColor: "text-indigo-400",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2070",
     featureTitle: "Infrastructure Power",
     featureDesc: "We eliminate friction in your sales process by automating repetitive tasks and ensuring data flows seamlessly between your tools."
   },
@@ -135,7 +135,7 @@ export const SERVICES = [
     metric: "2.5M",
     metricLabel: "Earned media impressions",
     accentColor: "text-rose-400",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2070",
     featureTitle: "Iconic Recognition",
     featureDesc: "We define the visual and verbal language that makes your brand stand out in saturated markets and global territories."
   }

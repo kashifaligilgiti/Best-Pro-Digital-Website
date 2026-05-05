@@ -205,9 +205,9 @@ const PortfolioPeek = () => {
       <div className="max-w-[1400px] mx-auto">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { name: "Verdia Energy", result: "4X Leads", img: "https://images.unsplash.com/photo-1551288049-bbbda5366392?q=80&w=2070" },
-            { name: "Apex FinTech", result: "+$2M ARR", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069" },
-            { name: "Lumina SaaS", result: "-32% CAC", img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070" }
+            { name: "Verdia Energy", result: "4X Leads", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069" },
+            { name: "Apex FinTech", result: "+$2M ARR", img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=2070" },
+            { name: "Lumina SaaS", result: "-32% CAC", img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2070" }
           ].map((item, i) => (
             <Link 
               to="/case-studies" 
