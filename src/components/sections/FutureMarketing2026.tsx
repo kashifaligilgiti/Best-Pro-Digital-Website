@@ -82,15 +82,15 @@ export const FutureMarketing2026 = () => {
     },
     {
       year: "2026",
-      title: "Agentic AI Commerce",
-      desc: "Marketing will no longer target humans exclusively; we will market to AI Agents who shop and negotiate on behalf of their users.",
+      title: "AI-Powered Shopping",
+      desc: "Marketing will no longer target humans exclusively; we will market to AI assistants that shop and compare products for their users.",
       icon: Brain,
       impact: "Technical Integration"
     },
     {
       year: "2026",
-      title: "Post-Cookie Identity",
-      desc: "Standard cookies are dead. 2026 is the year of 'Zero-Party Data' where brands must provide value to get users to share their DNA voluntarily.",
+      title: "Data Privacy & Trust",
+      desc: "Third-party cookies are disappearing. 2026 is the year of 'Direct Data' where brands must build real trust to get users to share information voluntarily.",
       icon: ShieldCheck,
       impact: "Privacy Dominance"
     },
@@ -168,10 +168,10 @@ export const FutureMarketing2026 = () => {
                     <div>
                        <h4 className="text-2xl font-black text-white uppercase mb-6 tracking-tighter leading-none">The Marketing <br/> Funnel Logic.</h4>
                        <p className="text-neutral-500 text-xs md:text-sm leading-relaxed mb-8 font-light">
-                          Most fail because they target 'Bottom of Funnel' (Ready to buy) without ever building 'Top of Funnel' (Awareness). Digital strategy is about building a sequence that leads a stranger from curiosity to conversion.
+                          Most businesses fail because they try to sell to people who don't know them yet. A successful strategy is a simple 3-step path that leads a stranger to becoming a happy customer.
                        </p>
                        <ul className="space-y-4">
-                          {['TOFU: Awareness & Attention', 'MOFU: Consideration & Intent', 'BOFU: Decision & Action'].map((step, i) => (
+                          {['Step 1: Get Noticed (Attract)', 'Step 2: Build Trust (Engage)', 'Step 3: Close the Sale (Convert)'].map((step, i) => (
                              <li key={i} className="flex gap-4 items-center">
                                 <div className="w-1.5 h-1.5 rounded-full bg-brand-accent" />
                                 <span className="text-[10px] font-bold text-white uppercase tracking-widest">{step}</span>
@@ -179,12 +179,89 @@ export const FutureMarketing2026 = () => {
                           ))}
                        </ul>
                     </div>
-                    <div className="relative mt-8 md:mt-0">
+                    <div className="relative mt-12 md:mt-0 p-8 bg-black/40 border border-white/5 rounded-[2rem] flex items-center justify-center overflow-hidden">
+                       {/* Background Glow */}
+                       <div className="absolute inset-0 bg-brand-accent/5 blur-[40px] rounded-full"></div>
+                       
                        {/* Funnel Viz */}
-                       <div className="flex flex-col items-center gap-2">
-                          <div className="w-full h-10 md:h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center"><span className="text-[9px] font-black text-white/20">AWARENESS</span></div>
-                          <div className="w-[80%] h-10 md:h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center"><span className="text-[9px] font-black text-white/20">CONSIDERATION</span></div>
-                          <div className="w-[60%] h-10 md:h-12 bg-brand-accent/20 border border-brand-accent/30 rounded-xl flex items-center justify-center"><span className="text-[9px] font-black text-brand-accent">CONVERSION</span></div>
+                       <div className="relative flex flex-col items-center gap-3 w-full max-w-[200px] z-10">
+                          {/* Top Lead Particles */}
+                          {[...Array(5)].map((_, i) => (
+                             <motion.div
+                                key={i}
+                                initial={{ y: -40, opacity: 0, scale: 0 }}
+                                animate={{ 
+                                   y: [0, 120], 
+                                   opacity: [0, 1, 1, 0],
+                                   scale: [0.5, 1, 0.8, 0.5],
+                                   x: [0, (i - 2) * 10, 0]
+                                }}
+                                transition={{ 
+                                   duration: 3, 
+                                   repeat: Infinity, 
+                                   delay: i * 0.6,
+                                   ease: "easeInOut"
+                                }}
+                                className="absolute top-0 w-2 h-2 rounded-full bg-white/40 shadow-[0_0_10px_white]"
+                             />
+                          ))}
+
+                          {/* Conversion Coins */}
+                          {[...Array(3)].map((_, i) => (
+                             <motion.div
+                                key={`coin-${i}`}
+                                initial={{ y: 80, opacity: 0, scale: 0 }}
+                                animate={{ 
+                                   y: [80, 160], 
+                                   opacity: [0, 1, 0],
+                                   scale: [0, 1.5, 2],
+                                   x: [0, (i - 1) * 30, (i - 1) * 50],
+                                   rotate: [0, 360]
+                                }}
+                                transition={{ 
+                                   duration: 1.5, 
+                                   repeat: Infinity, 
+                                   delay: i * 0.5 + 2, // Delay to start after "leads" pass through
+                                   ease: "easeOut"
+                                }}
+                                className="absolute w-4 h-4 rounded-full bg-brand-accent flex items-center justify-center text-[8px] font-black text-brand-primary"
+                             >
+                                $
+                             </motion.div>
+                          ))}
+
+                          <motion.div 
+                             whileHover={{ scale: 1.02 }}
+                             className="w-full h-12 bg-white/[0.03] border border-white/10 rounded-2xl flex items-center justify-center relative overflow-hidden group/step"
+                          >
+                             <div className="absolute inset-0 bg-white/5 translate-y-full group-hover/step:translate-y-0 transition-transform"></div>
+                             <span className="text-[10px] font-black text-white/30 tracking-widest relative z-10">GET NOTICED</span>
+                          </motion.div>
+                          
+                          <motion.div 
+                             whileHover={{ scale: 1.02 }}
+                             className="w-[85%] h-12 bg-white/[0.05] border border-white/10 rounded-2xl flex items-center justify-center relative overflow-hidden group/step"
+                          >
+                             <div className="absolute inset-0 bg-white/5 translate-y-full group-hover/step:translate-y-0 transition-transform"></div>
+                             <span className="text-[10px] font-black text-white/40 tracking-widest relative z-10 font-bold">BUILD TRUST</span>
+                          </motion.div>
+                          
+                          <motion.div 
+                             initial={{ boxShadow: "0 0 0px rgba(193,255,114,0)" }}
+                             animate={{ 
+                                boxShadow: ["0 0 0px rgba(193,255,114,0)", "0 0 20px rgba(193,255,114,0.3)", "0 0 0px rgba(193,255,114,0)"]
+                             }}
+                             transition={{ duration: 2, repeat: Infinity }}
+                             whileHover={{ scale: 1.05 }}
+                             className="w-[70%] h-14 bg-brand-accent border border-brand-accent rounded-2xl flex items-center justify-center relative overflow-hidden shadow-[0_10px_30px_rgba(193,255,114,0.2)]"
+                          >
+                             <motion.div 
+                                animate={{ x: ["-100%", "200%"] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+                             />
+                             <span className="text-[11px] font-black text-brand-primary tracking-widest relative z-10">TAKE ACTION</span>
+                          </motion.div>
                        </div>
                     </div>
                  </div>
@@ -193,16 +270,16 @@ export const FutureMarketing2026 = () => {
               <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                  <div className="p-8 md:p-10 bg-brand-surface border border-brand-border rounded-[2rem] md:rounded-[3rem]">
                     <Globe className="w-8 h-8 md:w-10 md:h-10 text-brand-accent mb-6" />
-                    <h4 className="text-lg font-bold text-white uppercase mb-3">Omni-Channel Flow</h4>
+                    <h4 className="text-lg font-bold text-white uppercase mb-3">Multi-Platform Visibility</h4>
                     <p className="text-neutral-500 text-xs leading-relaxed font-light">
-                       Modern users interact with a brand 8+ times before buying. We sync Social, Search, and Display to ensure a seamless experience.
+                       Modern users see a brand 8+ times across different sites before buying. We sync your social, search, and ads for a seamless experience.
                     </p>
                  </div>
                  <div className="p-8 md:p-10 bg-brand-surface border border-brand-border rounded-[2rem] md:rounded-[3rem]">
                     <Zap className="w-8 h-8 md:w-10 md:h-10 text-brand-accent mb-6" />
-                    <h4 className="text-lg font-bold text-white uppercase mb-3">Retargeting Logic</h4>
+                    <h4 className="text-lg font-bold text-white uppercase mb-3">Smart Follow-Up Systems</h4>
                     <p className="text-neutral-500 text-xs leading-relaxed font-light">
-                       Don't lose traffic. We implement server-side tracking to re-engage users who showed interest but didn't convert yet.
+                       Don't lose potential customers. We use advanced tracking to re-engage people who showed interest but haven't contacted you yet.
                     </p>
                  </div>
               </div>
@@ -212,9 +289,9 @@ export const FutureMarketing2026 = () => {
               <div className="h-full bg-brand-accent p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] flex flex-col justify-between">
                  <div>
                     <MessageSquare className="w-10 h-10 md:w-12 md:h-12 text-brand-primary mb-8 md:mb-12 opacity-30" />
-                    <h4 className="text-3xl font-black text-brand-primary uppercase tracking-tighter leading-none mb-6 italic">The Social <br/> Proof Engine.</h4>
+                    <h4 className="text-3xl font-black text-brand-primary uppercase tracking-tighter leading-none mb-6 italic">The Trust <br/> Builder Engine.</h4>
                     <p className="text-sm font-bold text-brand-primary/70 leading-relaxed md:leading-relaxed">
-                       Digital Trust is the primary currency of 2026. Reviews, Case Studies, and UGC are not optional—they are the technical requirements for growth.
+                       Online Trust is your strongest asset in 2026. Reviews, Case Studies, and Customer Photos are not optional—they are the key to growing your business.
                     </p>
                  </div>
                  <div className="mt-8 md:mt-12 space-y-6">

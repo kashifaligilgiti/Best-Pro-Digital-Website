@@ -15,6 +15,7 @@ import { SocialMediaKnowledge } from "../components/sections/SocialMediaKnowledg
 import { ContentMarketingKnowledge } from "../components/sections/ContentMarketingKnowledge";
 import { CRMKnowledge } from "../components/sections/CRMKnowledge";
 import { GlobalBrandingKnowledge } from "../components/sections/GlobalBrandingKnowledge";
+import { MarketingFunnelKnowledge } from "../components/sections/MarketingFunnelKnowledge";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,7 +77,7 @@ export const ServicePage = () => {
   }
 
   return (
-    <div ref={containerRef} className="lg:pl-16 pt-36 md:pt-44 pb-24 overflow-hidden">
+    <div ref={containerRef} className="lg:pl-16 pt-24 md:pt-44 pb-24 overflow-hidden">
       <Helmet>
         <title>{service.title} | GMB Rankup Service Matrix</title>
         <meta name="description" content={service.desc} />
@@ -111,91 +112,133 @@ export const ServicePage = () => {
           {service.title.split(' ')[0]}
         </div>
         
-        <div className="max-w-6xl relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="max-w-7xl relative z-10 grid lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="flex items-center gap-4 mb-6 md:mb-8">
               <span className={`font-mono ${service.accentColor} text-sm tracking-[0.3em] font-bold`}>{service.num}</span>
               <div className="h-px w-8 md:w-12 bg-brand-border"></div>
               <span className="text-white/40 text-[10px] uppercase font-bold tracking-widest flex items-center gap-2">
                 <Sparkles className="w-3 h-3 text-brand-accent" />
-                Service Deep-Dive
+                {slug === 'marketing-funnel' ? "Bespoke Revenue Infrastructure" : "Service Deep-Dive"}
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-8 md:mb-12 text-white">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl xl:text-9xl font-black uppercase tracking-tighter leading-[0.8] mb-8 md:mb-12 text-white">
               {service.title.split(' ').map((word, i) => (
-                <span key={i} className={i === 1 ? `${service.accentColor} italic font-serif lowercase font-light` : ""}>
-                   {word}{" "}
+                <span key={i} className="block relative">
+                   <span className={i === 1 ? `${service.accentColor} italic font-serif lowercase font-light` : ""}>
+                      {word}
+                   </span>
+                   {slug === 'marketing-funnel' && i === 0 && (
+                     <motion.div 
+                        animate={{ width: ["0%", "100%", "0%"] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -bottom-1 md:-bottom-2 left-0 h-0.5 md:h-1 bg-brand-accent opacity-30"
+                     />
+                   )}
                 </span>
               ))}
             </h1>
             
-            <p className="text-lg md:text-2xl text-neutral-400 font-light leading-relaxed mb-10 md:mb-12">
+            <p className="text-base sm:text-lg md:text-xl xl:text-2xl text-neutral-400 font-light leading-relaxed mb-10 md:mb-12 max-w-xl">
               {service.longDesc}
             </p>
             
-            <div className="flex gap-6">
-              <Link to="/contact" className="btn-primary flex items-center gap-2 group px-6 py-4 md:px-8 md:py-4">
-                Request Strategy Session <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <div className="flex flex-wrap gap-4 md:gap-6">
+              <Link to="/contact" className="btn-primary flex items-center gap-2 group px-6 py-3 md:px-8 md:py-4 text-sm md:text-base">
+                Request Strategy Session <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
+              {slug === 'marketing-funnel' && (
+                <div className="flex items-center gap-3 px-4 py-3 md:px-6 md:py-4 rounded-full border border-white/5 bg-white/[0.02]">
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-accent animate-ping" />
+                  <span className="text-[8px] md:text-[10px] font-black uppercase text-white/40 tracking-widest whitespace-nowrap">Live Results Engine Active</span>
+                </div>
+              )}
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative aspect-square lg:aspect-[4/5] rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden border border-brand-border shadow-2xl group"
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative aspect-square sm:aspect-video lg:aspect-[4/5] rounded-[2rem] sm:rounded-[3rem] lg:rounded-[4rem] overflow-hidden border border-brand-border shadow-2xl group"
           >
+             {slug === 'marketing-funnel' && (
+               <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+                  {[...Array(20)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      animate={{ 
+                        y: [-20, 1000],
+                        opacity: [0, 0.3, 0],
+                        x: [i * 45, i * 45 + (Math.random() - 0.5) * 100]
+                      }}
+                      transition={{ 
+                        duration: 4 + Math.random() * 2, 
+                        repeat: Infinity, 
+                        delay: Math.random() * 3,
+                        ease: "linear"
+                      }}
+                      className="absolute top-0 w-px h-6 md:h-8 bg-brand-accent"
+                    />
+                  ))}
+               </div>
+             )}
              <img 
                src={service.image} 
                alt={`Visual representation of ${service.title} specialized strategy`} 
                loading="lazy"
                width={1000}
                height={1200}
-               className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105 opacity-60"
+               className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110 opacity-60"
              />
              <div className="absolute inset-0 bg-gradient-to-t from-brand-primary via-transparent to-transparent"></div>
-             <div className="absolute bottom-10 left-10 md:bottom-12 md:left-12 right-12">
-                <div className={`text-3xl md:text-4xl font-black ${service.accentColor} mb-2 flex items-center gap-4`}>
-                    <TrendingUp className="w-6 h-6 md:w-8 md:h-8" />
+             <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 md:bottom-20 md:left-20 right-8 z-20">
+                <motion.div 
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    className={`text-4xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-9xl font-black ${service.accentColor} mb-2 flex items-center gap-2 md:gap-4 tracking-tighter`}
+                >
+                    <TrendingUp className="w-8 h-8 sm:w-12 sm:h-12 md:w-20 md:h-20" />
                     {service.metric}
-                </div>
-                <div className="text-white uppercase tracking-widest text-[10px] md:text-xs font-bold opacity-70 ml-10 md:ml-12">{service.metricLabel}</div>
+                </motion.div>
+                <div className="text-white uppercase tracking-[0.3em] md:tracking-[0.5em] text-[8px] md:text-sm font-black opacity-40 ml-10 md:ml-24">{service.metricLabel}</div>
              </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Benefits Grid */}
-      <section className="px-6 md:px-12 py-20 md:py-24 border-t border-brand-border">
-        <div className="mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter mb-4 flex items-center gap-4">
-             <ShieldCheck className="w-8 h-8 md:w-10 md:h-10 text-brand-accent" />
-             Core Benefits
+      {/* Benefits Section - Simple Bullet List */}
+      <section className="px-6 md:px-12 py-16 md:py-24 border-t border-brand-border">
+        <div className="max-w-xl mb-10">
+          <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 flex items-center gap-4">
+             <ShieldCheck className="w-8 h-8 md:w-12 md:h-12 text-brand-accent" />
+             Core Advantages
           </h2>
-          <p className="text-neutral-500 max-w-xl text-sm md:text-base">Strategic advantages built into every engagement to ensure market dominance.</p>
+          <p className="text-neutral-500 text-sm md:text-lg">Strategic advantages built into every engagement to ensure market dominance and compounding growth.</p>
         </div>
-        <div className="benefits-grid grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-white">
+
+        <ul className="space-y-4 max-w-3xl">
           {service.benefits.map((benefit, i) => (
-            <div 
+            <motion.li 
               key={i} 
-              className="benefit-card bg-brand-surface p-8 md:p-10 border border-brand-border rounded-[1.5rem] md:rounded-[2rem] hover:border-brand-accent/30 transition-all duration-500 group"
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="flex items-center gap-4 text-white/90 text-lg md:text-xl font-medium tracking-tight leading-tight"
             >
-              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center mb-6 md:mb-8 group-hover:bg-brand-accent/20 transition-all duration-300 transform group-hover:rotate-12`}>
-                <CheckCircle2 className={`${service.accentColor} w-5 h-5 md:w-6 md:h-6`} />
-              </div>
-              <h3 className="text-lg md:text-xl font-bold uppercase tracking-tighter mb-4 group-hover:text-brand-accent transition-colors">{benefit}</h3>
-              <p className="text-neutral-500 text-xs md:text-sm leading-relaxed">
-                We focus on high-impact outcomes that directly influence your ROI and brand equity.
-              </p>
-            </div>
+              <CheckCircle2 className={`${service.accentColor} w-5 h-5 md:w-6 md:h-6 flex-shrink-0`} />
+              {benefit}
+            </motion.li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* Unique Section Per Service */}
@@ -260,7 +303,7 @@ export const ServicePage = () => {
       </section>
 
       {/* Special Knowledge Hub Sections */}
-      <div className="px-6 md:px-12">
+      <div className="">
         {slug === "gbp-optimization" && <GBPKnowledge />}
         {slug === "ppc-advertising" && <PPCKnowledge />}
         {slug === "ai-receptionist" && <AIReceptionistKnowledge />}
@@ -269,6 +312,7 @@ export const ServicePage = () => {
         {slug === "content-marketing" && <ContentMarketingKnowledge />}
         {slug === "crm-integrations" && <CRMKnowledge />}
         {slug === "global-branding" && <GlobalBrandingKnowledge />}
+        {slug === "marketing-funnel" && <MarketingFunnelKnowledge />}
       </div>
 
       {/* Process Section */}

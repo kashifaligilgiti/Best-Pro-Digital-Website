@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useEffect, useRef } from "react";
-import { ArrowRight, Zap, Target, BarChart3, Globe2, Cpu, MessageSquare, Layers, Share2, Rocket } from "lucide-react";
+import { ArrowRight, Zap, Target, BarChart3, Globe2, Cpu, MessageSquare, Layers, Share2, Rocket, Filter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { SERVICES } from "../constants";
@@ -74,7 +74,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" ref={containerRef} className="relative pt-36 md:pt-40 lg:pt-48 pb-0 overflow-hidden lg:pl-16 min-h-[90vh] flex flex-col">
+    <section id="hero" ref={containerRef} className="relative pt-24 md:pt-40 lg:pt-48 pb-0 overflow-hidden lg:pl-16 min-h-[90vh] flex flex-col">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex-1 flex flex-col justify-center relative w-full">
         <div className="absolute -top-12 md:-top-20 left-4 text-[15vw] md:text-[240px] font-black opacity-[0.03] leading-none select-none tracking-tighter pointer-events-none uppercase">
           EVOLUTION
@@ -116,6 +116,19 @@ const Hero = () => {
         </div>
       </div>
 
+      <div className="lg:pl-16 bg-brand-surface py-10 md:py-16 border-t border-brand-border">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-8 font-black text-center lg:text-left">Synchronized with Industry Standards</p>
+          <div className="flex flex-wrap justify-center lg:justify-between items-center gap-8 md:gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
+             {["Google Partner", "Clutch Top Agency", "Forbes Agency Council", "Meta Business Partner", "HubSpot Expert"].map(partner => (
+               <div key={partner} className="text-sm md:text-lg font-black uppercase tracking-tighter text-white whitespace-nowrap">
+                 {partner}
+               </div>
+             ))}
+          </div>
+        </div>
+      </div>
+
       <div className="border-t border-brand-border flex flex-col md:flex-row mt-auto w-full">
         <div className="md:w-1/2 border-r border-brand-border p-8 md:p-12 lg:p-20 flex flex-col justify-between gap-8 text-white bg-brand-primary">
           <p className="text-lg md:text-2xl leading-relaxed opacity-70 font-light max-w-lg">
@@ -138,7 +151,7 @@ const Hero = () => {
         <div className="stats-container md:w-1/2 grid grid-cols-2 bg-brand-accent text-brand-primary">
           <div className="stat-item border-r border-black/10 p-8 md:p-12 flex flex-col justify-center">
             <span className="text-4xl md:text-5xl font-black mb-1">+142%</span>
-            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-black opacity-40">Avg. ROAS Increase</span>
+            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-black opacity-40">Ad Growth</span>
           </div>
           <Link to="/contact" className="stat-item p-8 md:p-12 flex flex-col justify-center group cursor-pointer relative overflow-hidden">
             <div className="relative z-10 flex items-center justify-between">
@@ -156,7 +169,7 @@ const Hero = () => {
 };
 
 const ServiceIcons: Record<string, any> = {
-  "profile-optimization": Globe2,
+  "gbp-optimization": Globe2,
   "seo-strategy": Rocket,
   "content-marketing": MessageSquare,
   "social-media": Share2,
@@ -164,30 +177,44 @@ const ServiceIcons: Record<string, any> = {
   "ai-receptionist": Cpu,
   "crm-integrations": Layers,
   "global-branding": Target,
+  "marketing-funnel": Filter,
 };
 
 const Services = () => {
   return (
     <section id="services" className="lg:pl-16 border-t border-brand-border overflow-hidden">
       <div className="max-w-[1400px] mx-auto">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {SERVICES.map((s, i) => {
             const Icon = ServiceIcons[s.slug] || Zap;
             return (
-              <div key={i} className="home-service-card group p-8 md:p-12 lg:p-16 border-r border-b border-brand-border hover:bg-white/[0.02] transition-all duration-500 relative h-full flex flex-col">
-                <Icon className="w-6 h-6 md:w-8 md:h-8 text-brand-accent mb-6 md:mb-8 opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
-                <span className="absolute top-8 right-8 md:top-10 md:right-10 font-mono text-[10px] md:text-xs opacity-20 text-white">{s.num}</span>
-                <h3 className="text-xl md:text-2xl font-black mb-4 md:mb-6 uppercase leading-tight text-white group-hover:text-brand-accent transition-colors">{s.title}</h3>
-                <p className="text-neutral-500 text-xs md:text-sm leading-relaxed mb-10 md:mb-12 flex-1 font-light">
+              <div key={i} className="home-service-card group p-6 sm:p-8 md:p-10 lg:p-16 border-r border-b border-brand-border hover:bg-white/[0.02] transition-all duration-500 relative h-full flex flex-col">
+                <Icon className="w-5 h-5 md:w-8 md:h-8 text-brand-accent mb-4 md:mb-8 opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
+                <span className="absolute top-4 right-6 sm:top-8 sm:right-8 md:top-10 md:right-10 font-mono text-[8px] md:text-xs opacity-20 text-white">{s.num}</span>
+                <div className="flex items-center justify-between gap-4 mb-2 sm:mb-0">
+                  <h3 className="text-sm sm:text-base md:text-2xl font-black uppercase leading-tight text-white group-hover:text-brand-accent transition-colors line-clamp-2 sm:mb-4 md:mb-6">
+                    {s.title}
+                  </h3>
+                  <Link 
+                    to={`/services/${s.slug}`} 
+                    aria-label={`Learn more about ${s.title}`}
+                    className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 sm:hidden rounded-full border border-brand-accent flex items-center justify-center group cursor-pointer overflow-hidden shrink-0"
+                  >
+                    <div className="bg-brand-accent h-full w-full flex items-center justify-center transition-transform hover:scale-110">
+                      <ArrowRight className="w-4 h-4 text-brand-primary" />
+                    </div>
+                  </Link>
+                </div>
+                <p className="hidden sm:block text-neutral-500 text-[10px] md:text-sm leading-relaxed mb-6 md:mb-12 flex-1 font-light line-clamp-3">
                   {s.desc}
                 </p>
                 <Link 
                   to={`/services/${s.slug}`} 
                   aria-label={`Learn more about ${s.title}`}
-                  className="h-10 w-10 md:h-12 md:w-12 rounded-full border border-brand-accent flex items-center justify-center group cursor-pointer overflow-hidden self-start"
+                  className="hidden sm:flex h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full border border-brand-accent items-center justify-center group cursor-pointer overflow-hidden self-start mt-auto"
                 >
                   <div className="bg-brand-accent h-full w-full flex items-center justify-center transition-transform hover:scale-110">
-                    <ArrowRight className="w-5 h-5 text-brand-primary" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-brand-primary" />
                   </div>
                 </Link>
               </div>
@@ -203,17 +230,17 @@ const PortfolioPeek = () => {
   return (
     <section id="case-studies-peek" className="lg:pl-16 border-t border-brand-border overflow-hidden">
       <div className="max-w-[1400px] mx-auto">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 lg:grid-cols-3">
           {[
             { name: "Verdia Energy", result: "4X Leads", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069" },
             { name: "Apex FinTech", result: "+$2M ARR", img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=2070" },
-            { name: "Lumina SaaS", result: "-32% CAC", img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2070" }
+            { name: "Lumina SaaS", result: "-32% Customer Cost", img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2070" }
           ].map((item, i) => (
             <Link 
               to="/case-studies" 
               key={i} 
               aria-label={`View ${item.name} detailed case study`}
-              className={`portfolio-item group relative aspect-[4/5] overflow-hidden border-r border-brand-border ${i === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
+              className={`portfolio-item group relative aspect-square sm:aspect-[4/5] overflow-hidden border-r border-brand-border ${i === 2 ? 'col-span-2 lg:col-span-1 border-b' : 'border-b'}`}
             >
               <img 
                 src={item.img} 
@@ -221,13 +248,13 @@ const PortfolioPeek = () => {
                 loading="lazy"
                 width={800}
                 height={1000}
-                className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700" 
+                className="w-full h-full object-cover transition-all duration-700 lg:grayscale lg:opacity-60 lg:group-hover:grayscale-0 lg:group-hover:opacity-100" 
               />
-              <div className="absolute inset-0 bg-brand-primary/40 group-hover:bg-transparent transition-colors"></div>
-              <div className="absolute bottom-8 left-8 right-8 md:bottom-12 md:left-12 md:right-12 z-10 transition-transform transform translate-y-4 group-hover:translate-y-0 duration-500">
-                 <div className="text-[10px] font-bold uppercase tracking-widest text-brand-accent mb-2">Success Study</div>
-                 <h3 className="text-3xl md:text-4xl font-black text-white uppercase leading-none mb-4">{item.name}</h3>
-                 <div className="text-white/60 font-mono text-xs md:text-sm">{item.result}</div>
+              <div className="absolute inset-0 lg:bg-brand-primary/40 lg:group-hover:bg-transparent transition-colors"></div>
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 md:bottom-12 md:left-12 md:right-12 z-10 transition-transform transform translate-y-2 sm:translate-y-4 group-hover:translate-y-0 duration-500">
+                 <div className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-brand-accent mb-1 sm:mb-2">Success Study</div>
+                 <h3 className="text-lg sm:text-3xl md:text-4xl font-black text-white uppercase leading-none mb-2 sm:mb-4">{item.name}</h3>
+                 <div className="text-white/60 font-mono text-[8px] sm:text-xs md:text-sm">{item.result}</div>
               </div>
             </Link>
           ))}
@@ -239,7 +266,7 @@ const PortfolioPeek = () => {
 
 const CTASection = () => {
   return (
-    <section id="cta" className="lg:pl-16 py-24 md:py-32 lg:py-40 text-center relative overflow-hidden">
+    <section id="cta" className="lg:pl-16 py-16 md:py-32 lg:py-40 text-center relative overflow-hidden">
        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-brand-accent/5 rounded-full blur-[120px]"></div>
        <div className="cta-content relative z-10 px-6">
         <h2 className="text-5xl md:text-8xl lg:text-[10vw] font-black italic uppercase leading-[0.85] tracking-tighter mb-10 md:mb-16 text-white">
@@ -358,9 +385,61 @@ export const Home = () => {
           {`
             {
               "@context": "https://schema.org",
-              "@type": "WebSite",
+              "@type": "LocalBusiness",
               "name": "Best Pro Digital",
-              "url": "https://bestprodigital.com"
+              "image": "https://bestprodigital.com/og-image.jpg",
+              "@id": "https://bestprodigital.com",
+              "url": "https://bestprodigital.com",
+              "telephone": "+18004769776",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Silicon Valley",
+                "addressLocality": "San Jose",
+                "addressRegion": "CA",
+                "postalCode": "95113",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 37.3382,
+                "longitude": -121.8863
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "18:00"
+              },
+              "priceRange": "$$$"
+            }
+          `}
+        </script>
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [{
+                "@type": "Question",
+                "name": "What is the Best Pro Digital difference in 2026?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "In 2026, digital success is dictated by semantic authority and AI-driven behavior prediction. We leverage proprietary neuro-mapping and GMB dominance algorithms that traditional agencies haven't adapted to yet."
+                }
+              }, {
+                "@type": "Question",
+                "name": "How fast can I expect GMB Map Pack results?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "While standard SEO takes months, our hyper-local synchronization protocols often yield signal jumps within the first 45 days of deployment."
+                }
+              }]
             }
           `}
         </script>

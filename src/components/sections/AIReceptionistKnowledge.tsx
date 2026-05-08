@@ -60,15 +60,15 @@ export const AIReceptionistKnowledge = () => {
   ];
 
   return (
-    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32">
+    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32 max-w-7xl mx-auto">
       <header className="mb-12 md:mb-20">
         <div className="flex items-center gap-3 text-brand-accent mb-6">
           <Bot className="w-5 h-5" />
           <span className="text-[10px] font-black uppercase tracking-[0.4em]">Future of Operations // 03</span>
         </div>
         <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white mb-8 leading-[0.9]">
-          The Immortal <br />
-          <span className="italic font-serif font-light lowercase text-brand-accent">Receptionist.</span>
+          AI Receptionist <br />
+          <span className="italic font-serif font-light lowercase text-brand-accent">& Chat Bot.</span>
         </h2>
         <p className="max-w-2xl text-neutral-400 text-base md:text-lg leading-relaxed font-light">
           Human staff sleep. Human staff miss calls. Human staff are expensive. Our AI Receptionists work 24/7/365, never take a lunch break, and treat every lead like a VIP from the first syllable.
@@ -108,19 +108,74 @@ export const AIReceptionistKnowledge = () => {
                 </div>
               </div>
 
-              <div className="bg-brand-primary p-8 md:p-10 rounded-2xl md:rounded-[2rem] border border-white/5 relative flex items-center justify-center overflow-hidden">
+              <div className="bg-brand-primary p-8 md:p-10 rounded-2xl md:rounded-[2rem] border border-white/5 relative flex items-center justify-center overflow-hidden h-[300px]">
                 <div className="relative z-10 flex flex-col items-center">
-                  <div className="relative mb-4 md:mb-6">
-                    <div className="w-16 h-16 md:w-24 md:h-24 bg-brand-accent/20 rounded-full animate-pulse blur-xl absolute inset-0"></div>
-                    <PhoneCall className="w-8 h-8 md:w-12 md:h-12 text-brand-accent relative z-10" />
+                  <div className="relative mb-6">
+                    {/* Pulsing Aura */}
+                    <motion.div 
+                      animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.3, 0.1] }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                      className="w-32 h-32 md:w-40 md:h-40 bg-brand-accent rounded-full absolute -top-4 -left-4 blur-3xl"
+                    />
+                    
+                    {/* AI Avatar Visual */}
+                    <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-brand-accent/30 p-2 bg-black/40 backdrop-blur-sm z-10 flex items-center justify-center">
+                      <div className="absolute inset-0 border-2 border-brand-accent rounded-full border-t-transparent animate-spin duration-[3s]"></div>
+                      <div className="relative">
+                        <motion.div
+                          animate={{ y: [0, -4, 0] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          <Headphones className="w-12 h-12 md:w-16 md:h-16 text-brand-accent" />
+                        </motion.div>
+                        <motion.div 
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.5 }}
+                          className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-brand-primary shadow-[0_0_10px_rgba(34,197,94,0.5)]"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Chat Bubbles Animation */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      {[...Array(3)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, x: 40, y: 0 }}
+                          animate={{ 
+                            opacity: [0, 1, 0],
+                            x: [40, 60 + i * 20],
+                            y: [-20 - i * 30, -40 - i * 40]
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            delay: i * 1,
+                            ease: "easeOut"
+                          }}
+                          className="absolute bg-brand-accent/10 border border-brand-accent/20 px-3 py-1 rounded-full backdrop-blur-md"
+                        >
+                          <MessageSquare className="w-3 h-3 text-brand-accent" />
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="text-center">
-                     <span className="text-[10px] font-black text-brand-accent uppercase tracking-widest block mb-1">Status: Active</span>
-                     <span className="text-white font-bold text-base md:text-xl tracking-tighter">AI AGENT // 001</span>
+                  
+                  <div className="text-center relative z-10">
+                     <span className="text-[10px] font-black text-brand-accent uppercase tracking-[0.3em] block mb-2">Neural Network Ready</span>
+                     <div className="flex items-center gap-2 justify-center">
+                        <div className="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></div>
+                        <span className="text-white font-black text-xl md:text-2xl tracking-tighter uppercase italic">Receptionist 3.0</span>
+                     </div>
                   </div>
                 </div>
+
+                {/* Grid Pattern Background */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #c1ff72 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+
                 {/* Waveform Visualization */}
-                <div className="absolute bottom-6 md:bottom-10 left-6 right-6 md:left-10 md:right-10 flex items-end justify-center gap-1 h-8">
+                <div className="absolute bottom-6 md:bottom-10 left-6 right-6 md:left-10 md:right-10 flex items-end justify-center gap-1.5 h-12 z-10">
                   {[...Array(12)].map((_, i) => (
                     <motion.div 
                       key={i}

@@ -38,7 +38,7 @@ export const CRMKnowledge = () => {
       title: "Predictive Analytics",
       desc: "Using historical data to forecast future revenue and identify which marketing channels are actually driving the most profit.",
       icon: LineChart,
-      stat: "Visual ROI"
+      stat: "Growth Results"
     }
   ];
 
@@ -49,7 +49,7 @@ export const CRMKnowledge = () => {
   ];
 
   return (
-    <div className="mt-32 border-t border-brand-border pt-32 px-12 pb-32">
+    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32 max-w-7xl mx-auto">
       <header className="mb-20">
         <div className="flex items-center gap-3 text-brand-accent mb-6">
           <Database className="w-5 h-5" />
@@ -170,20 +170,74 @@ export const CRMKnowledge = () => {
             </div>
             
             <div className="relative">
-               <div className="aspect-square bg-neutral-900 rounded-[3rem] border border-white/5 p-12 flex items-center justify-center relative overflow-hidden group">
-                  {/* Digital DNA / Grid visualization */}
-                  <div className="absolute inset-0 opacity-[0.03] pattern-grid-white"></div>
-                  <div className="relative z-10 text-center">
-                     <Cpu className="w-20 h-20 text-brand-accent mb-8 mx-auto opacity-40" />
-                     <h4 className="text-2xl font-black text-white uppercase tracking-tighter mb-4">Automation <br/> Engine</h4>
-                     <p className="text-[10px] text-neutral-500 uppercase tracking-widest leading-relaxed">Systemizing Human Relationships through <br/> Cold, Efficient Logic.</p>
+               <div className="aspect-square bg-black/40 rounded-[2.5rem] md:rounded-[3rem] border border-white/5 p-6 sm:p-12 flex items-center justify-center relative overflow-hidden group">
+                  {/* Central CRM Node */}
+                  <div className="relative z-10 text-center scale-90 sm:scale-100">
+                     <div className="relative mb-6 sm:mb-8 mx-auto w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center bg-brand-accent/5 rounded-full border border-brand-accent/10">
+                        <motion.div 
+                           animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.3, 0.1] }}
+                           transition={{ duration: 3, repeat: Infinity }}
+                           className="absolute inset-0 bg-brand-accent rounded-full blur-2xl"
+                        />
+                        <Database className="w-8 h-8 sm:w-12 sm:h-12 text-brand-accent relative z-10" />
+                        
+                        {/* Data Flow Lines */}
+                        {[...Array(4)].map((_, i) => (
+                           <motion.div
+                              key={i}
+                              animate={{ 
+                                 rotate: [0, 360]
+                              }}
+                              transition={{ 
+                                 duration: 4, 
+                                 repeat: Infinity, 
+                                 delay: i * 1,
+                                 ease: "linear"
+                              }}
+                              className="absolute inset--8 pointer-events-none"
+                           >
+                              <motion.div 
+                                 animate={{ x: [-20, 40, -20] }}
+                                 transition={{ duration: 2, repeat: Infinity }}
+                                 className="w-2 h-2 sm:w-3 sm:h-3 bg-brand-accent/40 rounded-full blur-sm"
+                              />
+                           </motion.div>
+                        ))}
+                     </div>
+                     <h4 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tighter mb-2 sm:mb-4">SYNC Engine 7.0</h4>
+                     <div className="flex items-center gap-2 justify-center">
+                        <motion.div 
+                           animate={{ opacity: [0, 1, 0] }}
+                           transition={{ duration: 1, repeat: Infinity }}
+                           className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-green-500 rounded-full"
+                        />
+                        <span className="text-[8px] sm:text-[10px] text-white/40 uppercase tracking-[0.3em]">Processing Inbound Pipeline</span>
+                     </div>
                   </div>
                   
-                  {/* Floating security tag */}
-                  <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-brand-primary px-4 py-2 rounded-full border border-white/10">
-                     <Lock className="w-3 h-3 text-brand-accent" />
-                     <span className="text-[9px] font-black uppercase text-white tracking-widest">End-to-End Encryption</span>
-                  </div>
+                  {/* Floating App Logos (Dots) */}
+                  {[...Array(6)].map((_, i) => (
+                     <motion.div
+                        key={i}
+                        animate={{ 
+                           y: [0, -100, 0],
+                           x: [0, i % 2 === 0 ? 50 : -50, 0],
+                           opacity: [0.1, 0.5, 0.1]
+                        }}
+                        transition={{ 
+                           duration: 5 + i, 
+                           repeat: Infinity, 
+                           ease: "easeInOut" 
+                        }}
+                        className="absolute w-10 h-10 sm:w-12 sm:h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm"
+                        style={{ 
+                           top: `${20 + (i * 15)}%`, 
+                           left: `${10 + (i * 12)}%` 
+                        }}
+                     >
+                        <RefreshCcw className="w-3 h-3 sm:w-4 sm:h-4 text-white/20" />
+                     </motion.div>
+                  ))}
                </div>
             </div>
          </div>

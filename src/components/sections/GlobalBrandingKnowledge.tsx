@@ -49,7 +49,7 @@ export const GlobalBrandingKnowledge = () => {
   ];
 
   return (
-    <div className="mt-32 border-t border-brand-border pt-32 px-12 pb-32">
+    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32 max-w-7xl mx-auto">
       <header className="mb-20">
         <div className="flex items-center gap-3 text-brand-accent mb-6">
           <Palette className="w-5 h-5" />
@@ -145,30 +145,70 @@ export const GlobalBrandingKnowledge = () => {
             
             <div className="relative">
                {/* Brand Asset Mockup Visualization */}
-               <div className="aspect-square bg-neutral-900 rounded-[3rem] border border-white/5 relative overflow-hidden p-8 flex items-center justify-center">
-                  <div className="absolute inset-0 opacity-10 pattern-grid-white"></div>
+               <div className="aspect-square bg-black shadow-inner rounded-[3rem] border border-white/5 relative overflow-hidden p-8 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-brand-accent/5 blur-[80px] rounded-full"></div>
                   
-                  {/* Floating Identity Assets */}
+                  {/* Floating Identity Assets with Active Motion */}
                   <div className="relative z-10 w-full h-full flex flex-col gap-4">
-                     <div className="h-1/2 bg-white/5 rounded-2xl border border-white/10 p-6 flex flex-col justify-end overflow-hidden group/card relative">
-                        <div className="text-[8px] font-black text-white/20 uppercase tracking-widest mb-2">Typography System</div>
-                        <div className="text-3xl font-black text-white tracking-tighter italic">Modern Grotesk</div>
-                        <div className="absolute -right-4 -bottom-4 opacity-5 group-hover/card:scale-110 transition-transform">
-                           <Type className="w-32 h-32" />
+                     <motion.div 
+                        animate={{ y: [0, -5, 0], x: [0, 5, 0] }}
+                        transition={{ duration: 4, repeat: Infinity }}
+                        className="h-1/2 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 flex flex-col justify-end overflow-hidden group/card relative"
+                     >
+                        <div className="text-[8px] font-black text-brand-accent uppercase tracking-widest mb-2 flex items-center gap-2">
+                           <div className="w-1 h-1 bg-brand-accent rounded-full animate-pulse" />
+                           Design Language System
                         </div>
-                     </div>
+                        <div className="text-4xl md:text-5xl font-black text-white tracking-tighter italic leading-none">Best <br/> Pro <br/> <span className="text-brand-accent">2026.</span></div>
+                        <div className="absolute -right-8 -bottom-8 opacity-[0.03] group-hover/card:scale-120 transition-transform duration-1000 rotate-12">
+                           <Type className="w-48 h-48" />
+                        </div>
+                     </motion.div>
+                     
                      <div className="flex gap-4 h-1/2">
-                        <div className="w-2/3 bg-brand-accent/10 border border-brand-accent/20 rounded-2xl p-6 flex flex-col justify-between">
-                           <div className="text-[8px] font-black text-brand-accent uppercase tracking-widest">Brand Mark</div>
-                           <div className="w-12 h-12 bg-brand-accent rounded-full"></div>
-                        </div>
-                        <div className="w-1/3 bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center gap-2">
-                           {[...Array(4)].map((_, i) => (
-                             <div key={i} className="w-full h-1.5 bg-white/10 rounded-full" />
+                        <motion.div 
+                           animate={{ scale: [1, 0.98, 1] }}
+                           transition={{ duration: 2, repeat: Infinity }}
+                           className="w-2/3 bg-brand-accent rounded-[2rem] p-6 flex flex-col justify-between shadow-[0_20px_40px_rgba(193,255,114,0.3)] relative overflow-hidden"
+                        >
+                           <motion.div 
+                              animate={{ x: ["-100%", "200%"] }}
+                              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
+                           />
+                           <div className="text-[8px] font-black text-brand-primary uppercase tracking-widest relative z-10">Brand Hub</div>
+                           <Globe className="w-12 h-12 text-brand-primary relative z-10" />
+                        </motion.div>
+                        
+                        <div className="w-1/3 bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center gap-3">
+                           {[...Array(5)].map((_, i) => (
+                             <motion.div 
+                                key={i} 
+                                initial={{ width: "20%" }}
+                                animate={{ width: i % 2 === 0 ? "100%" : "60%" }}
+                                transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2, repeatType: "reverse" }}
+                                className="h-1 bg-white/10 rounded-full" 
+                             />
                            ))}
                         </div>
                      </div>
                   </div>
+
+                  {/* Aesthetic Sparkles */}
+                  {[...Array(3)].map((_, i) => (
+                     <motion.div
+                        key={i}
+                        animate={{ opacity: [0, 0.5, 0], scale: [0.5, 1, 0.5] }}
+                        transition={{ duration: 3, repeat: Infinity, delay: i * 1 }}
+                        className="absolute text-brand-accent pointer-events-none"
+                        style={{ 
+                           bottom: `${10 + Math.random() * 80}%`, 
+                           left: `${10 + Math.random() * 80}%` 
+                        }}
+                     >
+                        <Sparkles className="w-6 h-6" />
+                     </motion.div>
+                  ))}
                </div>
             </div>
          </div>

@@ -36,10 +36,10 @@ export const CaseStudies = () => {
   ];
 
   return (
-    <div className="lg:pl-16 pt-36 md:pt-44 pb-20 md:pb-24">
+    <div className="lg:pl-16 pt-24 md:pt-44 pb-16 md:pb-24">
       <Helmet>
         <title>Case Studies | Best Pro Digital Success Portfolio</title>
-        <meta name="description" content="Witness the transformation. Explore our collection of high-impact case studies showing significant ROAS, lead generation, and brand growth." />
+        <meta name="description" content="Witness the transformation. Explore our collection of high-impact case studies showing significant profit growth, new lead generation, and brand growth." />
         <link rel="canonical" href="https://bestprodigital.com/case-studies" />
         <script type="application/ld+json">
           {`
@@ -53,18 +53,18 @@ export const CaseStudies = () => {
           `}
         </script>
       </Helmet>
-      <div className="max-w-7xl mx-auto px-12">
-        <div className="mb-24">
-          <p className="text-brand-accent text-xs uppercase tracking-[0.4em] mb-8 font-mono">Proof of work</p>
-          <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] mb-12 text-white">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="mb-16 md:mb-24 text-center md:text-left">
+          <p className="text-brand-accent text-[10px] md:text-xs uppercase tracking-[0.4em] mb-6 md:mb-8 font-mono">Proof of work</p>
+          <h1 className="text-4xl md:text-7xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.85] mb-8 md:mb-12 text-white">
             Elite <br/> <span className="text-brand-accent">Outcomes.</span>
           </h1>
-          <p className="text-neutral-500 text-xl max-w-2xl font-light">
+          <p className="text-neutral-500 text-base md:text-xl max-w-2xl font-light mx-auto md:mx-0">
             We don't publish fluff. These are documented transformations where precision marketing met ambitious goals.
           </p>
         </div>
 
-        <div className="grid gap-px bg-brand-border border border-brand-border overflow-hidden rounded-[2rem]">
+        <div className="grid gap-px bg-brand-border border border-brand-border overflow-hidden rounded-2xl md:rounded-[2rem]">
           {cases.map((c, i) => (
             <motion.div 
               key={i}
@@ -73,38 +73,38 @@ export const CaseStudies = () => {
               viewport={{ once: true }}
               className="bg-brand-primary group grid md:grid-cols-2 overflow-hidden"
             >
-              <div className="relative aspect-video md:aspect-auto overflow-hidden order-last md:order-first">
+              <div className="relative aspect-video md:aspect-auto overflow-hidden order-last md:order-first border-t md:border-t-0 border-brand-border">
                 <img 
                   src={c.img} 
                   alt={`Case Study: ${c.name} - ${c.result} Growth Transformation`} 
                   loading="lazy"
                   width={1200}
                   height={800}
-                  className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" 
+                  className="w-full h-full object-cover transition-all duration-700 lg:grayscale lg:opacity-50 lg:group-hover:grayscale-0 lg:group-hover:opacity-100" 
                 />
                 <div className="absolute inset-0 bg-brand-primary/20"></div>
               </div>
-              <div className="p-12 lg:p-20 flex flex-col justify-center">
-                <div className="flex gap-2 mb-8">
+              <div className="p-6 sm:p-10 lg:p-20 flex flex-col justify-center">
+                <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
                   {c.tags.map(tag => (
-                    <span key={tag} className="text-[10px] uppercase font-bold tracking-widest text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-full">
+                    <span key={tag} className="text-[8px] md:text-[10px] uppercase font-bold tracking-widest text-brand-accent border border-brand-accent/30 px-2 py-0.5 md:px-3 md:py-1 rounded-full shrink-0">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-white uppercase mb-6 leading-none">{c.name}</h2>
-                <div className="text-2xl font-black text-white/90 italic mb-6 leading-tight">
+                <h2 className="text-2xl md:text-5xl font-black text-white uppercase mb-4 md:mb-6 leading-[0.9] md:leading-none">{c.name}</h2>
+                <div className="text-lg md:text-2xl font-black text-white/90 italic mb-4 md:mb-6 leading-tight">
                   {c.result}
                 </div>
-                <p className="text-neutral-500 mb-12 leading-relaxed">
+                <p className="text-neutral-500 text-sm md:text-base mb-8 md:mb-12 leading-relaxed">
                   {c.desc}
                 </p>
                 <Link 
                   to="/contact" 
                   aria-label={`Get a transformation strategy session similar to ${c.name}`}
-                  className="inline-flex items-center gap-3 text-white font-bold uppercase tracking-widest text-xs group-hover:gap-6 transition-all duration-300"
+                  className="inline-flex items-center gap-3 text-white font-bold uppercase tracking-widest text-[10px] md:text-xs group-hover:gap-6 transition-all duration-300"
                 >
-                  Read Full Transformation <ArrowRight className="text-brand-accent" />
+                  Read Full Transformation <ArrowRight className="text-brand-accent w-4 h-4 md:w-5 md:h-5" />
                 </Link>
               </div>
             </motion.div>

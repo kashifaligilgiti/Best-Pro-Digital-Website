@@ -20,7 +20,8 @@ import {
   Palette,
   MessageCircle,
   TrendingUp,
-  BrainCircuit
+  BrainCircuit,
+  Filter
 } from "lucide-react";
 import { SERVICES } from "../constants";
 import gsap from "gsap";
@@ -38,6 +39,7 @@ const getServiceIcon = (slug: string) => {
     case "ai-receptionist": return MessageCircle;
     case "crm-integrations": return Database;
     case "global-branding": return Palette;
+    case "marketing-funnel": return Filter;
     default: return Zap;
   }
 };
@@ -144,7 +146,7 @@ export const Services = () => {
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-brand-primary pt-36 md:pt-44 pb-40 lg:pl-16 relative overflow-hidden">
+    <div ref={containerRef} className="min-h-screen bg-brand-primary pt-24 md:pt-44 pb-40 lg:pl-16 relative overflow-hidden">
       <Helmet>
         <title>Our Services | Digital Marketing Infrastructure</title>
         <meta name="description" content="Explore our suite of technical marketing services: SEO, GMB Optimization, AI Receptionists, and more. Built for 2026 performance levels." />
@@ -206,7 +208,7 @@ export const Services = () => {
                </div>
                <div className="reveal-text">
                   <div className="text-3xl md:text-4xl font-black text-white">4.8x</div>
-                  <div className="text-[10px] uppercase font-black text-white/30 tracking-widest mt-1">Avg. ROAS</div>
+                  <div className="text-[10px] uppercase font-black text-white/30 tracking-widest mt-1">Ad Growth</div>
                </div>
             </div>
           </div>

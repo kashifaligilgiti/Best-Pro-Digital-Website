@@ -32,7 +32,7 @@ export const GBPKnowledge = () => {
   ];
 
   return (
-    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32">
+    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32 max-w-7xl mx-auto">
       <header className="mb-12 md:mb-20">
         <div className="flex items-center gap-3 text-brand-accent mb-6">
           <BookOpen className="w-5 h-5" />
@@ -144,36 +144,81 @@ export const GBPKnowledge = () => {
             
             <div className="relative">
                {/* 5x5 Heatmap Grid Simulation */}
-               <div className="grid grid-cols-5 gap-2 md:gap-3 max-w-sm mx-auto p-4 bg-white/5 rounded-2xl md:rounded-3xl border border-white/10">
+               <div className="relative grid grid-cols-5 gap-1.5 md:gap-3 max-w-[280px] xs:max-w-sm mx-auto p-4 sm:p-6 bg-black/40 rounded-[2rem] sm:rounded-3xl border border-white/10 overflow-hidden scale-90 xs:scale-100">
+                  <div className="absolute inset-0 bg-brand-accent/5 blur-3xl rounded-full"></div>
                   {Array.from({ length: 25 }).map((_, i) => {
                     // Create a "center point" of heat
-                    const distFromCenter = Math.sqrt(Math.pow((Math.floor(i / 5) - 2), 2) + Math.pow((i % 5 - 2), 2));
-                    const isHot = distFromCenter < 1.5;
-                    const isMedium = distFromCenter < 2.5;
+                    const row = Math.floor(i / 5);
+                    const col = i % 5;
+                    const distFromCenter = Math.sqrt(Math.pow((row - 2), 2) + Math.pow((col - 2), 2));
+                    const isHot = distFromCenter < 1.1;
+                    const isMedium = distFromCenter < 2.1;
                     
                     return (
                       <motion.div 
                         key={i}
                         initial={{ scale: 0.8, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: i * 0.02 }}
-                        className={`aspect-square rounded-lg flex items-center justify-center text-[10px] font-bold ${
+                        animate={isHot ? { 
+                           backgroundColor: ["rgba(193,255,114,1)", "rgba(193,255,114,0.8)", "rgba(193,255,114,1)"],
+                           boxShadow: ["0 0 10px rgba(193,255,114,0.3)", "0 0 20px rgba(193,255,114,0.6)", "0 0 10px rgba(193,255,114,0.3)"]
+                        } : {}}
+                        transition={{ 
+                           delay: i * 0.02,
+                           duration: 2,
+                           repeat: isHot ? Infinity : 0
+                        }}
+                        className={`aspect-square rounded-md sm:rounded-lg flex items-center justify-center text-[8px] sm:text-[10px] font-black relative z-10 transition-colors duration-1000 ${
                           isHot ? 'bg-brand-accent text-brand-primary' : 
-                          isMedium ? 'bg-green-900/60 text-brand-accent/50 border border-brand-accent/20' : 
-                          'bg-neutral-900 text-neutral-700'
+                          isMedium ? 'bg-brand-accent/20 text-brand-accent/50 border border-brand-accent/20' : 
+                          'bg-white/5 text-white/10 border border-white/5'
                         }`}
                       >
-                        {Math.floor(distFromCenter + 1)}
+                        {isHot ? "1" : Math.floor(distFromCenter + 1)}
                       </motion.div>
                     );
                   })}
-                  {/* Pulse Center */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <div className="w-12 h-12 bg-brand-accent/20 rounded-full animate-ping"></div>
+                  
+                  {/* Radar Circles */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                    {[...Array(3)].map((_, i) => (
+                       <motion.div
+                          key={i}
+                          initial={{ scale: 0, opacity: 0.5 }}
+                          animate={{ scale: 4, opacity: 0 }}
+                          transition={{ 
+                             duration: 4, 
+                             repeat: Infinity, 
+                             delay: i * 1.3,
+                             ease: "easeOut"
+                          }}
+                          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 sm:w-20 sm:h-20 border border-brand-accent rounded-full"
+                       />
+                    ))}
+                    <motion.div 
+                       animate={{ 
+                          scale: [1, 1.2, 1],
+                          rotate: [0, 360]
+                       }}
+                       transition={{ duration: 3, repeat: Infinity }}
+                       className="relative z-20 w-8 h-8 sm:w-12 sm:h-12 bg-brand-primary border-2 border-brand-accent rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(193,255,114,0.4)]"
+                    >
+                       <MapPin className="w-4 h-4 sm:w-6 sm:h-6 text-brand-accent" />
+                    </motion.div>
                   </div>
                </div>
-               <div className="mt-8 text-center">
-                  <span className="text-[10px] uppercase tracking-[0.3em] font-black text-brand-accent opacity-50">RADIUS EXPANSION ALGORITHM</span>
+               <div className="mt-8 sm:mt-10 flex flex-col items-center">
+                  <div className="flex items-center gap-2 mb-2">
+                     <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-ping"></span>
+                     <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.4em] font-black text-white/40">Real-Time Search Ingestion</span>
+                  </div>
+                  <div className="h-1 w-32 sm:w-48 bg-white/10 rounded-full overflow-hidden">
+                     <motion.div 
+                        animate={{ x: ["-100%", "200%"] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                        className="w-1/2 h-full bg-gradient-to-r from-transparent via-brand-accent to-transparent"
+                     />
+                  </div>
                </div>
             </div>
          </div>

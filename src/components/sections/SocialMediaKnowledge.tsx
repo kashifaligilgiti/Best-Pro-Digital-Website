@@ -44,7 +44,7 @@ export const SocialMediaKnowledge = () => {
   ];
 
   return (
-    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32">
+    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32 max-w-7xl mx-auto">
       <header className="mb-12 md:mb-20">
         <div className="flex items-center gap-3 text-brand-accent mb-6">
           <Share2 className="w-5 h-5" />
@@ -116,46 +116,93 @@ export const SocialMediaKnowledge = () => {
 
           <div className="relative">
             {/* Smartphone Simulation Visual */}
-            <div className="w-full max-w-[280px] md:max-w-[300px] aspect-[9/19] bg-neutral-950 rounded-[2.5rem] md:rounded-[3rem] border-[4px] border-neutral-900 mx-auto relative overflow-hidden shadow-2xl">
+            <div className="w-full max-w-[260px] xs:max-w-[280px] md:max-w-[300px] aspect-[9/19] bg-neutral-950 rounded-[2.5rem] md:rounded-[3rem] border-[4px] border-neutral-900 mx-auto relative overflow-hidden shadow-2xl scale-90 xs:scale-100">
                {/* Content Feed Simulation */}
-               <div className="absolute inset-0 p-4 pt-12 space-y-6">
+               <div className="absolute inset-0 p-4 pt-8 sm:pt-12 space-y-4 sm:space-y-6">
                   {/* Fake Post 1 */}
-                  <div className="space-y-3">
+                  <div className="space-y-3 relative">
                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-brand-accent"></div>
-                        <div className="w-24 h-2 bg-white/10 rounded"></div>
+                        <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-brand-accent"></div>
+                        <div className="w-20 sm:w-24 h-2 bg-white/10 rounded"></div>
                      </div>
-                     <div className="w-full aspect-square bg-gradient-to-br from-brand-accent/20 to-brand-primary rounded-2xl"></div>
+                     <div className="relative w-full aspect-square bg-gradient-to-br from-brand-accent/20 to-brand-primary rounded-xl sm:rounded-2xl overflow-hidden">
+                        {/* Heart Explosion Effect */}
+                        {[...Array(8)].map((_, i) => (
+                           <motion.div
+                              key={i}
+                              initial={{ scale: 0, opacity: 0, x: "50%", y: "50%" }}
+                              animate={{ 
+                                 scale: [0, 1.5, 0], 
+                                 opacity: [0, 1, 0],
+                                 x: [`${50 + (i - 4) * 10}%`, `${50 + (i - 4) * 20}%`],
+                                 y: [`${50 - i * 5}%`, `${20 - i * 10}%`]
+                              }}
+                              transition={{ 
+                                 duration: 1.5, 
+                                 repeat: Infinity, 
+                                 delay: i * 0.2,
+                                 ease: "easeOut"
+                              }}
+                              className="absolute text-brand-accent/60"
+                           >
+                              <Heart className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
+                           </motion.div>
+                        ))}
+                     </div>
                      <div className="flex gap-4">
-                        <Heart className="w-4 h-4 text-brand-accent fill-brand-accent" />
-                        <MessageCircle className="w-4 h-4 text-white/40" />
-                        <Share2 className="w-4 h-4 text-white/40 ml-auto" />
+                        <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-brand-accent fill-brand-accent animate-pulse" />
+                        <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4 text-white/40" />
+                        <Share2 className="w-3 h-3 sm:w-4 sm:h-4 text-white/40 ml-auto" />
                      </div>
                   </div>
-                  {/* Fake Post 2 */}
-                  <div className="space-y-3 opacity-50">
-                     <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-neutral-800"></div>
-                        <div className="w-24 h-2 bg-white/10 rounded"></div>
+                  
+                  {/* Follower Count Widget */}
+                  <motion.div 
+                     animate={{ scale: [1, 1.02, 1] }}
+                     transition={{ duration: 2, repeat: Infinity }}
+                     className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-4 flex flex-col items-center"
+                  >
+                     <div className="text-[7px] sm:text-[8px] font-black text-white/20 uppercase tracking-widest mb-1">Growth Index</div>
+                     <div className="flex items-center gap-2">
+                        <Users className="w-2.5 h-2.5 sm:w-3 h-3 text-brand-accent" />
+                        <motion.span 
+                           animate={{ color: ["#fff", "#c1ff72", "#fff"] }}
+                           transition={{ duration: 1, repeat: Infinity }}
+                           className="text-base sm:text-lg font-black text-white"
+                        >
+                           +12,482
+                        </motion.span>
                      </div>
-                     <div className="w-full h-32 bg-white/5 rounded-2xl"></div>
-                  </div>
+                  </motion.div>
                </div>
                
                {/* UI Accents */}
-               <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-neutral-900 rounded-full"></div>
-               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/10 rounded-full"></div>
+               <div className="absolute top-4 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-3 sm:h-4 bg-neutral-900 rounded-full"></div>
             </div>
             
-            {/* Floating Data Blobs */}
-            <motion.div 
-               animate={{ y: [0, -10, 0] }}
-               transition={{ repeat: Infinity, duration: 3 }}
-               className="absolute -right-4 md:-right-10 top-20 p-4 bg-brand-accent rounded-2xl shadow-xl z-20"
-            >
-               <BarChart2 className="w-6 h-6 text-brand-primary" />
-               <div className="text-[10px] font-black text-brand-primary uppercase mt-1">+420% Growth</div>
-            </motion.div>
+            {/* Viral Sparkles */}
+            {[...Array(5)].map((_, i) => (
+               <motion.div
+                  key={`sparkle-${i}`}
+                  animate={{ 
+                     opacity: [0, 1, 0],
+                     scale: [0, 1, 0],
+                     rotate: [0, 45]
+                  }}
+                  transition={{ 
+                     duration: 2, 
+                     repeat: Infinity, 
+                     delay: i * 0.5 
+                  }}
+                  className="absolute z-20 text-brand-accent/40"
+                  style={{ 
+                     top: `${20 + i * 15}%`, 
+                     left: i % 2 === 0 ? '-10%' : '110%' 
+                  }}
+               >
+                  <Sparkles className="w-6 h-6" />
+               </motion.div>
+            ))}
           </div>
         </div>
       </div>

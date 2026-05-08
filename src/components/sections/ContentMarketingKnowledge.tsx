@@ -50,7 +50,7 @@ export const ContentMarketingKnowledge = () => {
   ];
 
   return (
-    <div className="mt-32 border-t border-brand-border pt-32 px-12 pb-32">
+    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32 max-w-7xl mx-auto">
       <header className="mb-20">
         <div className="flex items-center gap-3 text-brand-accent mb-6">
           <PenTool className="w-5 h-5" />
@@ -147,29 +147,78 @@ export const ContentMarketingKnowledge = () => {
             </div>
             
             <div className="relative">
-               {/* Visualizer: Semantic Bubbles */}
-               <div className="aspect-square bg-neutral-900 shadow-2xl rounded-full border border-white/5 relative flex items-center justify-center p-8 overflow-hidden">
+               {/* Visualizer: Semantic Bubbles & Writing Animation */}
+               <div className="aspect-square bg-black shadow-2xl rounded-full border border-white/5 relative flex items-center justify-center p-8 overflow-hidden group/container">
+                  {/* Rotating Orbit Path */}
                   <motion.div 
-                    animate={{ scale: [1, 1.1, 1] }} 
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-4 rounded-full border border-white/5"
+                  />
+                  
+                  {/* Central Writing Node */}
+                  <motion.div 
+                    animate={{ scale: [1, 1.05, 1], rotate: [0, 5, -5, 0] }} 
                     transition={{ repeat: Infinity, duration: 4 }}
-                    className="w-40 h-40 bg-brand-accent/10 border border-brand-accent/20 rounded-full flex items-center justify-center text-center p-6"
+                    className="w-44 h-44 bg-brand-accent/10 border border-brand-accent/20 rounded-full flex flex-col items-center justify-center text-center p-6 relative z-10 backdrop-blur-md shadow-[0_0_50px_rgba(193,255,114,0.1)]"
                   >
-                     <span className="text-[10px] font-black text-brand-accent uppercase tracking-widest">Brand Authority <br/> Core</span>
+                     <div className="mb-2 relative">
+                        <PenTool className="w-8 h-8 text-brand-accent" />
+                        <motion.div 
+                           animate={{ x: [0, 10, 0], y: [0, 10, 0] }}
+                           transition={{ duration: 1, repeat: Infinity }}
+                           className="absolute -right-2 -bottom-2 w-1.5 h-1.5 bg-brand-accent rounded-full"
+                        />
+                     </div>
+                     <span className="text-[10px] font-black text-brand-accent uppercase tracking-widest leading-tight">Semantic <br/> Engine Active</span>
                   </motion.div>
                   
-                  {/* Orbiting bubbles */}
-                  <div className="absolute top-10 left-20 p-3 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm">
-                     <span className="text-[8px] font-bold text-white/40 uppercase">SEO Content</span>
-                  </div>
-                  <div className="absolute bottom-20 right-10 p-3 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm">
-                     <span className="text-[8px] font-bold text-white/40 uppercase">Lead Magnets</span>
-                  </div>
-                  <div className="absolute top-40 right-5 p-3 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm">
-                     <span className="text-[8px] font-bold text-white/40 uppercase">Viral Sprints</span>
-                  </div>
-                  <div className="absolute bottom-10 left-10 p-3 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm">
-                     <span className="text-[8px] font-bold text-white/40 uppercase">Email Nurture</span>
-                  </div>
+                  {/* Orbiting Content Pieces */}
+                  {[...Array(4)].map((_, i) => (
+                     <motion.div
+                        key={i}
+                        animate={{ 
+                           rotate: [i * 90, i * 90 + 360],
+                        }}
+                        transition={{ 
+                           duration: 15, 
+                           repeat: Infinity, 
+                           ease: "linear" 
+                        }}
+                        className="absolute inset-0 pointer-events-none"
+                     >
+                        <motion.div 
+                           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.8, 0.3] }}
+                           transition={{ duration: 3, repeat: Infinity, delay: i * 0.7 }}
+                           className="absolute top-0 left-1/2 -translate-x-1/2 p-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-md pointer-events-auto"
+                        >
+                           <FileText className="w-4 h-4 text-white/40" />
+                        </motion.div>
+                     </motion.div>
+                  ))}
+
+                  {/* Typing Fragments */}
+                  {[...Array(8)].map((_, i) => (
+                     <motion.div
+                        key={`frag-${i}`}
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ 
+                           opacity: [0, 1, 0],
+                           scale: [0, 1, 0],
+                           x: [0, (i - 4) * 40],
+                           y: [0, (i % 2 === 0 ? 80 : -80)]
+                        }}
+                        transition={{ 
+                           duration: 2, 
+                           repeat: Infinity, 
+                           delay: i * 0.3,
+                           ease: "easeOut"
+                        }}
+                        className="absolute text-[8px] font-mono text-brand-accent/20"
+                     >
+                        {["STRATEGY", "VALUE", "TRUST", "GROWTH", "LEAD", "AUTHORITY"][i % 6]}
+                     </motion.div>
+                  ))}
                </div>
             </div>
          </div>
@@ -179,8 +228,8 @@ export const ContentMarketingKnowledge = () => {
       <div className="mt-24 grid md:grid-cols-3 gap-8">
          <div className="p-8 bg-brand-surface border border-brand-border rounded-3xl group">
             <Layout className="w-8 h-8 text-white mb-4 opacity-40 group-hover:opacity-100 transition-opacity" />
-            <h4 className="text-lg font-bold text-white uppercase mb-2">Omni-Channel Flow</h4>
-            <div className="text-xs text-neutral-500 leading-relaxed uppercase tracking-wider font-medium">One pillar article = 10 social posts + 1 Newsletter + 3 Vertical Videos. We maximize the ROI of every word.</div>
+            <h4 className="text-lg font-bold text-white uppercase mb-2">Connected Content</h4>
+            <div className="text-xs text-neutral-500 leading-relaxed uppercase tracking-wider font-medium">One pillar article = 10 social posts + 1 Newsletter + 3 Vertical Videos. We maximize the results of every word.</div>
          </div>
          <div className="p-8 bg-brand-surface border border-brand-border rounded-3xl group">
             <Search className="w-8 h-8 text-white mb-4 opacity-40 group-hover:opacity-100 transition-opacity" />

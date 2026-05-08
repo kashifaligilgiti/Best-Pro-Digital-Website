@@ -43,7 +43,7 @@ export const SEOKnowledge = () => {
   ];
 
   return (
-    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32">
+    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32 max-w-7xl mx-auto">
       <header className="mb-12 md:mb-20">
         <div className="flex items-center gap-3 text-brand-accent mb-6">
           <Search className="w-5 h-5" />
@@ -114,25 +114,71 @@ export const SEOKnowledge = () => {
              </div>
              
              <div className="relative">
-                {/* Graph Visualization */}
-                <div className="aspect-video bg-neutral-900/50 rounded-2xl md:rounded-3xl border border-white/5 p-6 md:p-8 flex items-end gap-x-2 md:gap-x-4">
-                   {[40, 30, 45, 60, 55, 80, 70, 95].map((h, i) => (
-                     <motion.div 
-                        key={i}
-                        initial={{ height: 0 }}
-                        whileInView={{ height: `${h}%` }}
-                        transition={{ delay: i * 0.1, duration: 1 }}
-                        className="flex-grow bg-brand-accent/20 border-t border-brand-accent rounded-t-sm relative group"
-                     >
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-brand-accent text-brand-primary text-[8px] font-black px-2 py-0.5 rounded">
-                           Month {i + 1}
-                        </div>
-                     </motion.div>
-                   ))}
+                {/* SEO Bot/Scanning Animation */}
+                <div className="aspect-square xs:aspect-video bg-black/40 rounded-[2rem] md:rounded-3xl border border-white/10 p-4 sm:p-8 flex flex-col relative overflow-hidden group">
+                   {/* Grid Background */}
+                   <div className="absolute inset-x-0 top-0 h-full opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(#c1ff72 1px, transparent 1px), linear-gradient(90deg, #c1ff72 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+                   
+                   {/* Scanning Line */}
+                   <motion.div 
+                      animate={{ top: ["0%", "100%", "0%"] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-x-0 h-0.5 bg-brand-accent/40 shadow-[0_0_15px_#C1FF72] z-20 pointer-events-none"
+                   />
+
+                   {/* Organic Growth Content Bubbles */}
+                   <div className="relative z-10 flex-grow grid grid-cols-2 xs:grid-cols-3 gap-2 sm:gap-4 scale-90 sm:scale-100 origin-top">
+                      {[...Array(6)].map((_, i) => (
+                         <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ 
+                               opacity: [0.2, 1, 0.2],
+                               y: [0, -5, 0],
+                               borderColor: ["rgba(255,255,255,0.05)", "rgba(193,255,114,0.3)", "rgba(255,255,255,0.05)"]
+                            }}
+                            transition={{ duration: 3, repeat: Infinity, delay: i * 0.4 }}
+                            className="bg-white/5 border border-white/5 rounded-lg md:rounded-xl p-2 md:p-3 flex flex-col gap-1.5 md:gap-2"
+                         >
+                            <div className="h-1 w-1/2 bg-white/10 rounded-full"></div>
+                            <div className="h-1 w-full bg-white/5 rounded-full"></div>
+                            <div className="h-1 w-4/5 bg-white/5 rounded-full"></div>
+                            <div className="mt-auto flex justify-between items-center">
+                               <div className="w-3 h-3 md:w-4 md:h-4 rounded bg-brand-accent/20 flex items-center justify-center">
+                                  <motion.div 
+                                     animate={{ opacity: [0, 1, 0] }}
+                                     transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.4 }}
+                                     className="w-1 h-1 bg-brand-accent rounded-full"
+                                  />
+                               </div>
+                               <span className="text-[5px] md:text-[6px] font-black text-white/20 uppercase">Indexed</span>
+                            </div>
+                         </motion.div>
+                      ))}
+                   </div>
+                   
+                   {/* Search Bar Visual */}
+                   <div className="mt-4 sm:mt-6 flex gap-2 scale-90 sm:scale-100 origin-bottom">
+                      <div className="flex-grow h-8 sm:h-10 bg-brand-primary border border-white/10 rounded-full flex items-center px-3 sm:px-4 gap-2 sm:gap-3">
+                         <Search className="w-2.5 h-2.5 sm:w-3 h-3 text-white/20" />
+                         <motion.div 
+                            animate={{ opacity: [1, 0, 1] }}
+                            transition={{ duration: 0.8, repeat: Infinity }}
+                            className="w-px sm:w-0.5 h-3 sm:h-4 bg-brand-accent"
+                         />
+                      </div>
+                      <div className="w-8 h-8 sm:w-10 h-10 bg-brand-accent rounded-full flex items-center justify-center">
+                         <BarChart3 className="w-3 h-3 sm:w-4 h-4 text-brand-primary" />
+                      </div>
+                   </div>
                 </div>
-                <div className="mt-6 flex justify-between px-2">
-                    <span className="text-[8px] md:text-[9px] font-black uppercase text-white/20 tracking-tighter italic">Foundational phase</span>
-                    <span className="text-[8px] md:text-[9px] font-black uppercase text-brand-accent tracking-tighter animate-pulse">Authority breakthrough</span>
+                
+                <div className="mt-6 sm:mt-8 flex flex-col xs:flex-row justify-between items-center gap-3 px-2">
+                    <div className="flex items-center gap-2">
+                       <Cpu className="w-3 h-3 text-brand-accent animate-spin-slow" />
+                       <span className="text-[8px] md:text-[9px] font-black uppercase text-white/40 tracking-widest">Bot Intelligence Phase</span>
+                    </div>
+                    <span className="text-[8px] md:text-[9px] font-black uppercase text-brand-accent tracking-tighter animate-pulse">Authority growth active</span>
                 </div>
              </div>
           </div>
@@ -176,7 +222,7 @@ export const SEOKnowledge = () => {
                 </div>
                 <div className="p-6 bg-brand-accent rounded-xl md:rounded-2xl">
                    <div className="text-[10px] uppercase font-black text-brand-primary/40 tracking-widest mb-2">Traffic Quality</div>
-                   <div className="text-lg md:text-xl font-bold text-brand-primary uppercase">Highest LTV Sources</div>
+                   <div className="text-lg md:text-xl font-bold text-brand-primary uppercase">Most Valuable Customers</div>
                 </div>
              </div>
           </div>

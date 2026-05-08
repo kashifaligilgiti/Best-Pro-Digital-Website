@@ -41,7 +41,7 @@ export const PPCKnowledge = () => {
       title: "Performance Max", 
       desc: "Google's AI-driven across all channels. We feed the machine the right creative to scale automatically.",
       icon: Cpu,
-      metrics: "ROAS focused"
+      metrics: "Sales focused"
     }
   ];
 
@@ -85,7 +85,7 @@ export const PPCKnowledge = () => {
   ];
 
   return (
-    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32">
+    <div className="mt-20 md:mt-32 border-t border-brand-border pt-20 md:pt-32 px-6 md:px-12 pb-20 md:pb-32 max-w-7xl mx-auto">
       <header className="mb-12 md:mb-20">
         <div className="flex items-center gap-3 text-brand-accent mb-6">
           <TrendingUp className="w-5 h-5" />
@@ -152,34 +152,79 @@ export const PPCKnowledge = () => {
               "Your Ad Rank = Max Bid × Quality Score. We win by making your ads better, so you pay less than your competitors for better positions."
             </p>
             
-            <div className="space-y-6 md:space-y-8">
-               <div className="p-5 md:p-6 bg-white/[0.02] border border-white/5 rounded-xl md:rounded-2xl">
-                  <div className="flex justify-between items-center mb-4">
-                     <span className="text-[10px] uppercase font-black text-white/40 tracking-widest">Expected CTR</span>
-                     <span className="text-brand-accent text-[10px] font-black tracking-widest">HIGH</span>
-                  </div>
-                  <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                     <motion.div initial={{ width: 0 }} whileInView={{ width: "95%" }} transition={{ duration: 1.5 }} className="h-full bg-brand-accent shadow-[0_0_10px_#C1FF72]" />
-                  </div>
-               </div>
-               <div className="p-5 md:p-6 bg-white/[0.02] border border-white/5 rounded-xl md:rounded-2xl">
-                  <div className="flex justify-between items-center mb-4">
-                     <span className="text-[10px] uppercase font-black text-white/40 tracking-widest">Ad Relevance</span>
-                     <span className="text-brand-accent text-[10px] font-black tracking-widest">OPTIMIZED</span>
-                  </div>
-                  <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                     <motion.div initial={{ width: 0 }} whileInView={{ width: "100%" }} transition={{ duration: 1.5, delay: 0.2 }} className="h-full bg-brand-accent shadow-[0_0_10px_#C1FF72]" />
-                  </div>
-               </div>
-               <div className="p-5 md:p-6 bg-white/[0.02] border border-white/5 rounded-xl md:rounded-2xl">
-                  <div className="flex justify-between items-center mb-4">
-                     <span className="text-[10px] uppercase font-black text-white/40 tracking-widest">UX Alignment</span>
-                     <span className="text-brand-accent text-[10px] font-black tracking-widest">ELITE</span>
-                  </div>
-                  <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                     <motion.div initial={{ width: 0 }} whileInView={{ width: "90%" }} transition={{ duration: 1.5, delay: 0.4 }} className="h-full bg-brand-accent shadow-[0_0_10px_#C1FF72]" />
-                  </div>
-               </div>
+            <div className="space-y-6 md:space-y-8 relative">
+                {/* Funnel Viz */}
+                <div className="bg-black/40 border border-white/5 rounded-3xl p-8 flex flex-col items-center justify-center min-h-[350px] overflow-hidden relative">
+                   {/* Traffic Particles */}
+                   {[...Array(12)].map((_, i) => (
+                      <motion.div
+                         key={i}
+                         initial={{ y: -20, opacity: 0, x: (i - 6) * 20 }}
+                         animate={{ 
+                            y: [0, 300], 
+                            opacity: [0, 1, 1, 0],
+                            scale: [0.3, 0.8, 0.3],
+                            x: (i - 6) * 20 + Math.sin(i) * 30
+                         }}
+                         transition={{ 
+                            duration: 3, 
+                            repeat: Infinity, 
+                            delay: i * 0.4,
+                            ease: "linear"
+                         }}
+                         className="absolute top-0 w-2 h-2 rounded-full bg-brand-accent/20"
+                      />
+                   ))}
+
+                   {/* Vertical Funnel Layers */}
+                   <div className="relative z-10 flex flex-col items-center gap-3 w-full max-w-[220px]">
+                      <div className="w-full h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center relative">
+                         <div className="absolute inset-0 bg-brand-accent/5 animate-pulse"></div>
+                         <span className="text-[9px] font-black text-white/30 tracking-[0.3em]">RELEVANCE</span>
+                      </div>
+                      <div className="w-[85%] h-10 bg-white/10 border border-white/10 rounded-xl flex items-center justify-center relative">
+                         <span className="text-[9px] font-black text-white/50 tracking-[0.3em]">QUALITY SCORE</span>
+                      </div>
+                      
+                      {/* ROI Blast */}
+                      <div className="relative pt-4">
+                         {[...Array(4)].map((_, i) => (
+                            <motion.div
+                               key={`coin-${i}`}
+                               initial={{ scale: 0, y: 0, opacity: 0 }}
+                               animate={{ 
+                                  scale: [0, 2, 2.5], 
+                                  y: [0, 60], 
+                                  opacity: [0, 1, 0],
+                                  x: [(i - 1.5) * 40, (i - 1.5) * 80],
+                                  rotate: [0, 360]
+                               }}
+                               transition={{ 
+                                  duration: 1.2, 
+                                  repeat: Infinity, 
+                                  delay: i * 0.3 + 1,
+                                  ease: "easeOut" 
+                               }}
+                               className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-brand-accent text-brand-primary font-black flex items-center justify-center text-xs shadow-[0_0_20px_rgba(193,255,114,0.6)]"
+                            >
+                               $
+                            </motion.div>
+                         ))}
+                         
+                         <motion.div 
+                           animate={{ scale: [1, 1.05, 1] }}
+                           transition={{ duration: 2, repeat: Infinity }}
+                           className="w-10 h-10 md:w-12 md:h-12 bg-brand-accent rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(193,255,114,0.4)]"
+                         >
+                            <Zap className="w-5 h-5 md:w-6 md:h-6 text-brand-primary" />
+                         </motion.div>
+                      </div>
+                   </div>
+
+                   <div className="absolute bottom-6 left-0 right-0 text-center">
+                      <span className="text-[8px] font-black text-brand-accent uppercase tracking-[0.5em] animate-pulse">Bid Cycle Optimization</span>
+                   </div>
+                </div>
             </div>
           </div>
           
@@ -242,7 +287,7 @@ export const PPCKnowledge = () => {
           <div className="max-w-4xl relative z-10">
              <div className="flex items-center gap-3 mb-6 opacity-60">
                 <PieChart className="w-5 h-5" />
-                <span className="text-[10px] font-black uppercase tracking-[0.4em]">ROAS Prediction Lab</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.4em]">Results Prediction Lab</span>
              </div>
              <h3 className="text-3xl md:text-6xl font-black uppercase tracking-tighter mb-8 leading-[0.9]">
                 Predictive <br />
@@ -255,7 +300,7 @@ export const PPCKnowledge = () => {
              <div className="flex flex-wrap gap-6 md:gap-8">
                <div className="space-y-1">
                   <div className="text-2xl md:text-3xl font-black">2.4x</div>
-                  <div className="text-[10px] uppercase font-black tracking-widest opacity-60">Avg ROAS Lift</div>
+                  <div className="text-[10px] uppercase font-black tracking-widest opacity-60">Avg Profit Lift</div>
                </div>
                <div className="space-y-1">
                   <div className="text-2xl md:text-3xl font-black">-40%</div>
